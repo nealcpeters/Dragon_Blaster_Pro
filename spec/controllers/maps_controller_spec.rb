@@ -1,8 +1,8 @@
 # require 'spec_helper'
 
-# describe UsersController do
+# describe MapsController do
 
-#   describe "user CRUD" do
+#   describe "map controller tests" do
 #     xit "should create a valid user" do
 
 #     end
