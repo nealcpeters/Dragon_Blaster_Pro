@@ -21,8 +21,11 @@ feature 'Map displays' do
          click_button "Create User"
        }.to change(User, :count).by(1)
 
-      map = Map.create(creator_id: 1, title: 'map', description: 'a map for all maps')
-      visit "/users/#{map.creator_id}/maps"
+      user = User.find_by_username("abed")
+
+      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+      # visit "/users/#{map.creator_id}/maps"
+      click_link("My Maps")
       expect(page).to have_content("#{map.title}")
     end
   end
