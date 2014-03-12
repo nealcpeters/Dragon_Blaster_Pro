@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: dragon_blaster_development
   pool: 5
-  username: dragon_blaster
+  username:
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -48,7 +48,7 @@ test:
   encoding: unicode
   database: dragon_blaster_test
   pool: 5
-  username: dragon_blaster
+  username:
   password:
 
 production:
@@ -56,5 +56,5 @@ production:
   encoding: unicode
   database: dragon_blaster_production
   pool: 5
-  username: dragon_blaster
+  username:
   password:
