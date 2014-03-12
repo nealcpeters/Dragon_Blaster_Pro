@@ -10,7 +10,10 @@ DragonBlaster::Application.routes.draw do
     resources :maps
   end
 
-  resources :maps
+  get '/all_maps', to: 'maps#all'
+
+  # resources :maps
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
