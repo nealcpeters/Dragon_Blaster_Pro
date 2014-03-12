@@ -26,4 +26,15 @@ class MapsController < ApplicationController
   def map_params
     params.require(:map).permit(:title, :description, :user_id, :north_id, :south_id, :east_id, :west_id)
   end
+
+  def edit
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @map = @user.maps.find(params[:id])
+    @map.destroy
+
+    redirect_to action: :index
+  end
 end

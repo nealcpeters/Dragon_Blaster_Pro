@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140312161522) do
     t.integer  "creator_id"
     t.string   "title"
     t.text     "description"
-    t.integer  "size"
+    t.integer  "size",        default: 25
     t.datetime "created_at"
     t.datetime "updated_at"
   end
