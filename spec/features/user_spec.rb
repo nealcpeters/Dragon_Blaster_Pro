@@ -16,7 +16,7 @@ feature 'Users' do
   end
 
   context "User account login" do
-    it "should login a new user" do
+    it "should login a user" do
       user = User.create(username: 'abed', email: 'abed@greendale.com', password: 'password', password_confirmation: 'password')
       visit "/sessions/new"
 
@@ -24,6 +24,20 @@ feature 'Users' do
       fill_in 'password', with: "password"
       click_button "Log in"
       expect(page).to have_content("#{user.username}")
+    end
+  end
+
+  context "User account logout" do
+    it "should log a user out" do
+      user = User.create(username: 'abed', email: 'abed@greendale.com', password: 'password', password_confirmation: 'password')
+      visit "/sessions/new"
+
+      fill_in 'username', with: "abed"
+      fill_in 'password', with: "password"
+      click_button "Log in"
+
+      click_link "Sign-Out"
+      expect(page).to have_content("Logged out!")
     end
   end
 
