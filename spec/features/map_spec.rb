@@ -31,7 +31,7 @@ feature 'Map displays' do
   end
 
   context "on all maps page" do
-    xit "sees a list of all created maps" do
+    it "sees a list of all created maps" do
       User.create(username: 'abed', email: 'abed@greendale.com', password: 'password', password_confirmation: 'password')
       map = Map.create(creator_id: 1, title: 'map', description: 'a map for all maps')
       visit "/all_maps"
