@@ -58,4 +58,10 @@ feature 'Map displays' do
       expect(page).to have_content("Gameboard here!")
     end
   end
+
+  context "Neal and Eric are awesome. " do
+    it "Yep. They most certainly are." do
+      expect("duh" == "duh").to eq true
+    end
+  end
 end
