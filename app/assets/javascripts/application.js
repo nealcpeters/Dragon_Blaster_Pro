@@ -45,24 +45,28 @@
 //   end
 
 $(function(){
-  $( "#dialog-form" ).dialog({
-        autoOpen: true,
-        height: 800,
-        width: 800,
-        dialogClass: 'no-close',
-        modal: true,
-        buttons: {
-          "Submit": function() {
-            allFields.removeClass( "ui-state-error" );
-          },
-          Cancel: function() {
-            $( this ).dialog( "close" );
-          }
+  $("#dialog-form").dialog({
+      autoOpen: true,
+      height: 350,
+      width: 400,
+      dialogClass: 'no-close',
+      modal: true,
+      buttons: {
+        "Submit": function() {
+          var data = $('#new_map').serialize();
+          var url = $('#new_map').attr('action');
+          $.post(url, data, function(serverResponse) {
+            window.map_id = serverResponse.map_id;
+            $('#dialog-form').dialog("close");
+          });
+        },
+        Cancel: function() {
+          var userId = $('#map_creator_id').val();
+          console.log(userId);
+          window.location.href = "/user/" + userId;
         }
-        // close: function() {
-        //   allFields.val( "" ).removeClass( "ui-state-error" );
-        // }
-      });
+      },
+    });
 })
 
 
