@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <p>Dragon Blaster</p>
+    <ul>
+      <% if current_user %>
+        <li><%= link_to 'Sign-Out',  session_path(current_user), method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Register', new_user_path %></li>
+        <li><%= link_to 'Sign-In', new_session_path %></li>
+      <% end %>
+    </ul>
+  </nav>
 
 <%= yield %>
 
