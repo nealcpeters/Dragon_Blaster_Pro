@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140312161522) do
   end
 
   create_table "maps", force: true do |t|
-    t.integer  "creater_id"
+    t.integer  "creator_id"
     t.string   "title"
     t.text     "description"
     t.integer  "size"
