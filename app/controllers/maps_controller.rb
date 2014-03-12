@@ -10,7 +10,7 @@ class MapsController < ApplicationController
   end
 
   def new
-    @user = current_user
+    @user = User.find(params[:user_id])
     @map = Map.new
   end
 

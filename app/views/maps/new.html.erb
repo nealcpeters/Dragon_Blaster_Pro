@@ -1,7 +1,14 @@
-<%= form_for [@user, @maps] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.submit %>
-<% end %>
+<div id="dialog-form" class='no-close'>
+  <!-- <p class="validateTips">All form fields are required.</p> -->
+  <%= form_for [@user, @map] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+<div id='gameboard'>
+  <h1>Gameboard here!</h1>
+</div>

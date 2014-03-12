@@ -43,3 +43,26 @@
 //   def change_east_rooms
 //     west.east_id = room.id
 //   end
+
+$(function(){
+  $( "#dialog-form" ).dialog({
+        autoOpen: true,
+        height: 800,
+        width: 800,
+        dialogClass: 'no-close',
+        modal: true,
+        buttons: {
+          "Submit": function() {
+            allFields.removeClass( "ui-state-error" );
+          },
+          Cancel: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+        // close: function() {
+        //   allFields.val( "" ).removeClass( "ui-state-error" );
+        // }
+      });
+})
+
+
