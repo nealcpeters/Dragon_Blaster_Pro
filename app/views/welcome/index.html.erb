@@ -1,5 +1,7 @@
 <h1>Welcome to Dragon Blaster!</h1>
-
+<% if :notice %>
+  <%= flash[:notice] %>
+<% end %>
 <ul>
   <% unless current_user %>
     <li><%= link_to 'Register', new_user_path %></li>
