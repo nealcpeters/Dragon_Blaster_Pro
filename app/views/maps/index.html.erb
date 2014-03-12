@@ -1,2 +1,5 @@
-<h1>Test</h1>
- <p>asdsa</p>
+<h1><%= @user.username%>'s Maps:</h1>
+
+ <% @user_maps.each do |map| %>
+  <p><%= map.title %></p>
+ <% end %>
