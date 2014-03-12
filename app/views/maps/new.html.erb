@@ -5,10 +5,46 @@
     <%= f.text_field :title %>
     <%= f.label :description %>
     <%= f.text_field :description %>
-    <%= f.hidden_field :creator_id, :value => @user.id %>
   <% end %>
 </div>
 
 <div id='gameboard'>
-  <h1>Gameboard here!</h1>
+  <div id="cells">
+      <div class="row-1 col-1"></div>
+      <div class="row-1 col-2"></div>
+      <div class="row-1 col-3"></div>
+      <div class="row-1 col-4"></div>
+      <div class="row-1 col-5"></div>
+      <div class="row-2 col-1"></div>
+      <div class="row-2 col-2"></div>
+      <div class="row-2 col-3"></div>
+      <div class="row-2 col-4"></div>
+      <div class="row-2 col-5"></div>
+      <div class="row-3 col-1"></div>
+      <div class="row-3 col-2"></div>
+      <div class="row-3 col-3"></div>
+      <div class="row-3 col-4"></div>
+      <div class="row-3 col-5"></div>
+      <div class="row-4 col-1"></div>
+      <div class="row-4 col-2"></div>
+      <div class="row-4 col-3"></div>
+      <div class="row-4 col-4"></div>
+      <div class="row-4 col-5"></div>
+      <div class="row-5 col-1"></div>
+      <div class="row-5 col-2"></div>
+      <div class="row-5 col-3"></div>
+      <div class="row-5 col-4"></div>
+      <div class="row-5 col-5"></div>
+    </div>
 </div>
+
+
+
+<!-- @row = number of rows we want
+@col = same w cols
+
+(1..@row).each do |x|
+    (1..@col).each do |y|
+      <div class = "row-x col-y"></div>
+    end
+end -->

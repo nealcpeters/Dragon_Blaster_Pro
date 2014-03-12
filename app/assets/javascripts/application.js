@@ -48,13 +48,14 @@ $(function(){
   $("#dialog-form").dialog({
       autoOpen: true,
       height: 350,
-      width: 400,
+      width: 250,
       dialogClass: 'no-close',
       modal: true,
       buttons: {
         "Submit": function() {
           var data = $('#new_map').serialize();
           var url = $('#new_map').attr('action');
+          console.log(url);
           $.post(url, data, function(serverResponse) {
             window.map_id = serverResponse.map_id;
             $('#dialog-form').dialog("close");
