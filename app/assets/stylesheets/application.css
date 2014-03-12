@@ -40,4 +40,11 @@ nav ul {
 
 nav li {
   display: inline;
+  padding-left: 16px;
+}
+
+
+nav a {
+  text-decoration: none;
+  color: black;
 }
