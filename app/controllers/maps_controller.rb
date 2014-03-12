@@ -8,4 +8,13 @@ class MapsController < ApplicationController
   def all
     @maps = Map.all
   end
+
+  def new
+    @user = current_user
+    @map = Map.new
+  end
+
+  def create
+
+  end
 end
