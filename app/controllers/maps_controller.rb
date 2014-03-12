@@ -17,4 +17,15 @@ class MapsController < ApplicationController
   def create
 
   end
+
+  def edit
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @map = @user.maps.find(params[:id])
+    @map.destroy
+
+    redirect_to action: :index
+  end
 end
