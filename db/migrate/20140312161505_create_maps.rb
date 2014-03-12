@@ -4,7 +4,7 @@ class CreateMaps < ActiveRecord::Migration
       t.integer :creator_id
       t.string :title
       t.text :description
-      t.integer :size
+      t.integer :size, :default => 25
 
       t.timestamps
     end
