@@ -37,6 +37,25 @@ feature 'Map displays' do
       visit "/all_maps"
       expect(page).to have_content("#{map.title}")
     end
+  end
 
+  context "create link works" do
+    it "taken to create map page" do
+      visit "/users/new"
+
+      expect {
+         fill_in 'user_username', with: "abed"
+         fill_in 'user_email', with: "abed@greendale.com"
+         fill_in 'user_password', with: "password"
+         fill_in 'user_password_confirmation', with: "password"
+         click_button "Create User"
+       }.to change(User, :count).by(1)
+
+      user = User.find_by_username("abed")
+
+      click_link("Create a Map")
+
+      expect(page).to have_content("Gameboard here!")
+    end
   end
 end
