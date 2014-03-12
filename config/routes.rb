@@ -6,7 +6,9 @@ DragonBlaster::Application.routes.draw do
   root 'welcome#index'
 
   resources :sessions
-  resources :users
+  resources :users do
+    resources :maps
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
