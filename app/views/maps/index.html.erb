@@ -3,7 +3,7 @@
   <h1><%= @user.username%>'s Maps:</h1>
 
    <% @user_maps.each do |map| %>
-    <p><%= map.title %> <%= link_to "Edit", edit_user_map_path(@user, map) %> <%= link_to "Delete", user_map_path(@user, map), method: :delete, data: { confirm: 'Are you SURE you want to delete this? Like a hero who embarks on a new adventure, there\'s no going back.' } %></p>
+    <p><%= map.title %> <%= link_to "Edit", edit_user_map_path(@user, map) %> <%= link_to "Delete", user_map_path(@user, map), method: :delete%></p>
    <% end %>
 
  <% else %>

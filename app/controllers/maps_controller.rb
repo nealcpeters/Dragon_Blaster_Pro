@@ -22,7 +22,6 @@ class MapsController < ApplicationController
     end
   end
 
-  private
   def map_params
     params.require(:map).permit(:title, :description, :user_id, :north_id, :south_id, :east_id, :west_id)
   end
