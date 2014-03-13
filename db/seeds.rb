@@ -15,8 +15,8 @@ User.first.maps.create(starting_room_id: 1, title: "Alex's Journey through Easte
 User.first.maps.create(starting_room_id: 1, title: "Dusty's Debate Team", description: 'Make a statement, end up in a debate')
 User.first.maps.create(starting_room_id: 1, title: "Dragon Blaster", description: 'Blast Dragons, Dick Maps, Save the Princess')
 
-Game.create(player_id: 1, map_id: 1)
-Hero.create(room_id: 1, game_id: 1, player_id: 1, name: 'Troy', description: 'We miss you')
+Game.create(player_id: 1, map_id: 1, room_id: 1, hero_id: 1)
+Hero.create(player_id: 1, name: 'Troy', description: 'We miss you')
 Room.create(map_id: 1, title: 'first', description: 'first_description', north_id: nil, south_id: nil, east_id: 2, west_id: nil)
 Room.create(map_id: 1, title: 'second', description: 'second_description', north_id: nil, south_id: nil, east_id: 3, west_id: 1)
 Room.create(map_id: 1, title: 'third', description: 'third_description', north_id: nil, south_id: nil, east_id: 4, west_id: 2)
