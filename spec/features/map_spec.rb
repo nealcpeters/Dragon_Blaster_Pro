@@ -4,7 +4,7 @@ feature 'Map displays' do
   context "on user's map's homepage" do
     it "not see a list of user's maps without being logged in" do
       User.create(username: 'abed', email: 'abed@greendale.com', password: 'password', password_confirmation: 'password')
-      map = Map.create(creator_id: 1, title: 'map', description: 'a map for all maps')
+      map = Map.create(starting_room_id: 1, creator_id: 1, title: 'map', description: 'a map for all maps')
       visit "/users/#{map.creator_id}/maps"
       expect(page).to have_no_content("#{map.title}")
     end
@@ -23,7 +23,7 @@ feature 'Map displays' do
 
       user = User.find_by_username("abed")
 
-      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+      map = Map.create(starting_room_id: 1, creator_id: user.id, title: 'map', description: 'a map for all maps')
       # visit "/users/#{map.creator_id}/maps"
       click_link("My Maps")
       expect(page).to have_content("#{map.title}")
@@ -33,7 +33,7 @@ feature 'Map displays' do
   context "on all maps page" do
     it "sees a list of all created maps" do
       User.create(username: 'abed', email: 'abed@greendale.com', password: 'password', password_confirmation: 'password')
-      map = Map.create(creator_id: 1, title: 'map', description: 'a map for all maps')
+      map = Map.create(starting_room_id: 1, creator_id: 1, title: 'map', description: 'a map for all maps')
       visit "/all_maps"
       expect(page).to have_content("#{map.title}")
     end
@@ -72,7 +72,7 @@ feature 'Map displays' do
 
       user = User.find_by_username("abed")
 
-      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+      map = Map.create(starting_room_id: 1, creator_id: user.id, title: 'map', description: 'a map for all maps')
       # visit "/users/#{map.creator_id}/maps"
       click_link("My Maps")
       expect {
@@ -94,7 +94,7 @@ feature 'Map displays' do
 
       user = User.find_by_username("abed")
 
-      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+      map = Map.create(starting_room_id: 1, creator_id: user.id, title: 'map', description: 'a map for all maps')
       # visit "/users/#{map.creator_id}/maps"
       click_link("My Maps")
       click_link("Edit")
@@ -121,7 +121,7 @@ feature 'Map displays' do
        }.to change(User, :count).by(1)
 
       user = User.find_by_username("abed")
-      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+      map = Map.create(starting_room_id: 1, creator_id: user.id, title: 'map', description: 'a map for all maps')
 
       visit "/all_maps"
 
@@ -142,7 +142,7 @@ feature 'Map displays' do
        }.to change(User, :count).by(1)
 
       user = User.find_by_username("abed")
-      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+      map = Map.create(starting_room_id: 1, creator_id: user.id, title: 'map', description: 'a map for all maps')
 
       visit "/all_maps"
 
@@ -163,7 +163,7 @@ feature 'Map displays' do
        }.to change(User, :count).by(1)
 
       user = User.find_by_username("abed")
-      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+      map = Map.create(starting_room_id: 1, creator_id: user.id, title: 'map', description: 'a map for all maps')
 
       visit "/all_maps"
 
