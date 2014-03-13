@@ -19,6 +19,7 @@ class MapsController < ApplicationController
     if @map.save
       render :json => {map_id: @map.id}
     else
+      puts 'Heyyyyyyyyyyyyy'
       render :json => {map_id: nil}
     end
   end
