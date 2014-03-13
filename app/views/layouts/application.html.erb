@@ -11,17 +11,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav>
-    <p><%= link_to 'Dragon Blaster', root_path %></p>
-    <ul>
-      <% if current_user %>
-        <li><%= link_to 'Sign-Out',  session_path(current_user), method: :delete %></li>
-      <% else %>
-        <li><%= link_to 'Register', users_path %></li>
-        <li><%= link_to 'Sign-In', sessions_path %></li>
-      <% end %>
-    </ul>
-  </nav>
+  <%= render partial: 'layouts/navbar' %>
 
 <%= yield %>
 

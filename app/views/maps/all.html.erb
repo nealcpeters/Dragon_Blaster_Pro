@@ -1,5 +1,5 @@
 <h1>All Dragon Blaster Maps:</h1>
 
  <% @maps.each do |map| %>
-  <p><%= map.title %></p>
+  <p><%= link_to "#{map.title}", user_map_path(map.creator_id, map)  %></p>
  <% end %>

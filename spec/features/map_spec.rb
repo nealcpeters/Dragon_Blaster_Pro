@@ -107,4 +107,70 @@ feature 'Map displays' do
       expect("duh" == "duh").to eq true
     end
   end
+
+  context "can click link to view a map on all maps page" do
+    it "should show map title" do
+      visit "/users/new"
+
+      expect {
+         fill_in 'user_username', with: "abed"
+         fill_in 'user_email', with: "abed@greendale.com"
+         fill_in 'user_password', with: "password"
+         fill_in 'user_password_confirmation', with: "password"
+         click_button "Create User"
+       }.to change(User, :count).by(1)
+
+      user = User.find_by_username("abed")
+      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+
+      visit "/all_maps"
+
+      click_link("#{map.title}")
+
+      expect(page).to have_content("#{map.title}")
+    end
+
+    it "should show map description" do
+      visit "/users/new"
+
+      expect {
+         fill_in 'user_username', with: "abed"
+         fill_in 'user_email', with: "abed@greendale.com"
+         fill_in 'user_password', with: "password"
+         fill_in 'user_password_confirmation', with: "password"
+         click_button "Create User"
+       }.to change(User, :count).by(1)
+
+      user = User.find_by_username("abed")
+      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+
+      visit "/all_maps"
+
+      click_link("#{map.title}")
+
+      expect(page).to have_content("#{map.description}")
+    end
+
+    it "should show map creator username" do
+      visit "/users/new"
+
+      expect {
+         fill_in 'user_username', with: "abed"
+         fill_in 'user_email', with: "abed@greendale.com"
+         fill_in 'user_password', with: "password"
+         fill_in 'user_password_confirmation', with: "password"
+         click_button "Create User"
+       }.to change(User, :count).by(1)
+
+      user = User.find_by_username("abed")
+      map = Map.create(creator_id: user.id, title: 'map', description: 'a map for all maps')
+
+      visit "/all_maps"
+
+      click_link("#{map.title}")
+
+      expect(page).to have_content("#{user.username}")
+    end
+
+  end
 end

@@ -41,4 +41,25 @@ feature 'Users' do
     end
   end
 
+  context "Edit User" do
+    it "should edit a user's information" do
+      user = User.create(username: 'abed', email: 'abed@greendale.com', password: 'password', password_confirmation: 'password')
+      visit "/sessions/new"
+
+      fill_in 'username', with: "abed"
+      fill_in 'password', with: "password"
+      click_button "Log in"
+
+      click_link "Edit User Information"
+      fill_in 'user_username', with: "abed1"
+      fill_in 'user_email', with: 'abed@greendale.com'
+      fill_in 'user_password', with: "password"
+      fill_in 'user_password_confirmation', with: "password"
+      click_button "Update User"
+      expect(page).to have_content("abed1's Profile")
+    end
+  end
+
+
+
 end
