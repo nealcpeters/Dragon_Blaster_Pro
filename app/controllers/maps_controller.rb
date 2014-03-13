@@ -23,7 +23,7 @@ class MapsController < ApplicationController
   end
 
   def map_params
-    params.require(:map).permit(:title, :description,  :north_id, :south_id, :east_id, :west_id)
+    params.require(:map).permit(:title, :description, :creator_id)
   end
 
   def edit
