@@ -15,13 +15,10 @@
 //= require turbolinks
 //= require_tree .
 
-
-
 // * we go to the creation page
 // * it prompts us for the map title and description
 // * when that's submitted, it goes to the server and creates a new map
 // * when the map info comes back, we save the map id to the window
-
 
 // * then we click on a div square to bring up a room creation form
 // on click:
@@ -55,10 +52,16 @@ $(function(){
         var data = $('#new_map').serialize();
         var url = $('#new_map').attr('action');
         window.userId = $('#map_creator_id').val();
-        $.post(url, data, function(serverResponse) {
-          window.mapId = serverResponse.map_id
-          $('#dialog-form').dialog("close");
-        });
+        $.ajax({
+          type: 'post',
+          url: url,
+          data: data,
+          success: function(serverResponse) {
+            console.log(serverResponse);
+            window.mapId = serverResponse.map_id;
+            $('#dialog-form').dialog("close");
+          }
+        })
       },
       Cancel: function() {
         window.location.href = "/users/" + window.userId;
@@ -68,22 +71,23 @@ $(function(){
 
 $(".grid-cell").on("click", function(){
   $(this).css("background", "blue");
-  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>")
+  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>");
 })
 
-$(document).on("submit", "#room-form", function(){
-  event.preventDefault();
-  var url = $('#room-form').attr('action');
-  var data = $('#room-form').serialize();
-  $.ajax({
-    url: url,
-    type: "POST",
-    data: data,
-    success: function(response){
-      console.log("yay we got a response!");
-      console.log(response);
-    }
-  })
-})
+  $(document).on("submit", "#room-form", function(){
+    event.preventDefault();
+    var url = $('#room-form').attr('action');
+    var data = $('#room-form').serialize();
+    $.ajax({
+      url: url,
+      type: "POST",
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      data: data,
+      success: function(response){
+        console.log("yay we got a response!");
+        console.log(response);
+      }
+    });
+  });
+});
 
-})
