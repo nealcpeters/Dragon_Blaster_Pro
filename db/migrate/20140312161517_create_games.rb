@@ -3,7 +3,8 @@ class CreateGames < ActiveRecord::Migration
     create_table :games do |t|
       t.integer :player_id
       t.integer :map_id
-
+      t.integer :room_id
+      t.integer :hero_id
       t.timestamps
     end
   end

@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20140312161522) do
   create_table "games", force: true do |t|
     t.integer  "player_id"
     t.integer  "map_id"
+    t.integer  "room_id"
+    t.integer  "hero_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "heros", force: true do |t|
-    t.integer  "room_id"
-    t.integer  "game_id"
     t.integer  "player_id"
     t.string   "name"
     t.text     "description"
