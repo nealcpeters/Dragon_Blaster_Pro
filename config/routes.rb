@@ -19,5 +19,7 @@ DragonBlaster::Application.routes.draw do
 
   get '/all_maps', to: 'maps#all'
 
+  get '/game/new/:map_id', to: 'games#launch', as: "games_launch"
+
 
 end

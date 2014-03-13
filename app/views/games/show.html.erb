@@ -3,7 +3,7 @@
 <h3>Hero: <%= @hero.name %></h3>
 <h3>Location: <%= @room.title %></h3>
 
-<%= form_tag("/games/#{@game.id}/input", method: "post", autofocus: true) do %>
+<%= form_tag("/games/#{@game.id}/input", method: "post") do %>
   <%= label_tag(:user_input, "Your Action?:") %>
   <%= text_field_tag(:user_input) %>
   <p><%= submit_tag("Submit") %></p>
