@@ -70,10 +70,17 @@ $(function(){
   });
 
 $(".clickable").on("click", function(){
+  $('.grid-cell').each(function(){
+    console.log(this);
+    if($(this).css('background-color') == 'blue') {
+      console.log('hey I am blue!')
+    }
+  });
   $(this).css("background", "blue");
   // save which div we clicked on here
   // unbind this from div clicks (remove class clickable)
   // search for neighbors
+  $("#room-form-container").empty();
   $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>");
 })
 
@@ -97,4 +104,6 @@ $(".clickable").on("click", function(){
     });
   });
 });
+
+// style="background-color: blue; background-position: initial initial; background-repeat: initial initial;"
 
