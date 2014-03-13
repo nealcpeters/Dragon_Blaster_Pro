@@ -23,5 +23,3 @@ Room.create(map_id: 1, title: 'third', description: 'third_description', north_i
 Room.create(map_id: 1, title: 'fourth', description: 'fourth_description', north_id: nil, south_id: nil, east_id: 5, west_id: 3)
 Room.create(map_id: 1, title: 'fifth', description: 'fifth_description', north_id: nil, south_id: nil, east_id: nil, west_id: 4)
 
-
-
