@@ -14,15 +14,21 @@ class GamesController < ApplicationController
     when /\w*east/
       @game.move_hero_east
       @game.save
+      @results = "You go east"
     when /\w*west/
       @game.move_hero_west
       @game.save
+      @results = "You go west"
     when /\w*north/
       @game.move_hero_north
       @game.save
+      @results = "You go north"
     when /\w*south/
       @game.move_hero_south
       @game.save
+      @results = "You go south"
+    when /\w*look/
+      @results = "You see #{@game.room.description}"
     end
     @map = @game.map
     @player = @game.player
