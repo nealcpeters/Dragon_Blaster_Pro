@@ -68,7 +68,7 @@ $(function(){
 
 $(".grid-cell").on("click", function(){
   $(this).css("background", "blue");
-  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/room/new' method='POST'><input type='text' placeholder='Room Name' name='name'><textarea name='description' placeholder='Room Description'></textarea><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>")
+  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>")
 })
 
 $(document).on("submit", "#room-form", function(){
@@ -81,10 +81,9 @@ $(document).on("submit", "#room-form", function(){
     data: data,
     success: function(response){
       console.log("yay we got a response!");
+      console.log(response);
     }
   })
 })
 
 })
-
-// /users/" + window.userId + "/maps/" + window.mapId + "/room/new'
