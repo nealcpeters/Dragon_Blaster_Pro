@@ -13,6 +13,10 @@ DragonBlaster::Application.routes.draw do
     end
   end
 
+  resources :games
+
+  post '/games/:id/input', to: 'games#input'
+
   get '/all_maps', to: 'maps#all'
 
 

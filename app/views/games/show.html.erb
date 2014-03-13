@@ -1,0 +1,16 @@
+<h1>Welcome to <%= @map.title %>, <%= @player.username %></h1>
+
+<h3>Hero: <%= @hero.name %></h3>
+<h3>Location: <%= @room.title %></h3>
+
+<%= form_tag("/games/#{@game.id}/input", method: "post", autofocus: true) do %>
+  <%= label_tag(:user_input, "Your Action?:") %>
+  <%= text_field_tag(:user_input) %>
+  <p><%= submit_tag("Submit") %></p>
+<% end %>
+
+<div>
+  <% if @results %>
+    <p><%= @results %></p>
+  <% end %>
+</div>
