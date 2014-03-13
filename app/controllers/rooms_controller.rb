@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
     puts params
     puts room_params
     @room = Room.new(room_params)
+
     if @room.save
       render :json => {room_id: @room.id}
     else

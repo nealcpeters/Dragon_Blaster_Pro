@@ -70,22 +70,80 @@ $(function(){
   });
 
 $(".clickable").on("click", function(){
-  $('.grid-cell').each(function(){
-    console.log(this);
-    if($(this).css('background-color') == 'blue') {
-      console.log('hey I am blue!')
-    }
-  });
+  $('.grid-cell').filter(function(index){
+    return $(this).css('background-color') == "rgb(0, 0, 255)";
+  }).css('background-color', 'white');
+
+  // This get the current location (index) of the clicked square
+  currentSquare = this;
   $(this).css("background", "blue");
+  // console.log($('.grid-cell')[currentSquare]);
+  // window.lastSquareClicked = ______
   // save which div we clicked on here
-  // unbind this from div clicks (remove class clickable)
   // search for neighbors
   $("#room-form-container").empty();
-  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>");
+  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input id='north_id' type='hidden' name='north_id'><input id='south_id' type='hidden' name='south_id'><input id='east_id' type='hidden' name='east_id'><input id='west_id' type='hidden' name='west_id'><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>");
 })
+
+function getNorthId(currentSquare){
+  if($(currentSquare).hasClass("row-1")){
+    console.log("we're in the top row and have no north neighbor")
+  } else {
+    console.log("finding north neighbor...............................................................");
+    var index = $(currentSquare).index();
+    var northRoom = $('.grid-cell')[index - 5];
+    return $(northRoom).attr("id");
+  }
+};
+
+function getSouthId (currentLocationIndex) {
+  if($(currentSquare).hasClass("row-5")){
+    console.log("we're in the bottom row and have no south neighbor")
+  } else {
+    console.log("finding south neighbor...............................................................");
+    var index = $(currentSquare).index();
+    var southRoom = $('.grid-cell')[index + 5];
+    return $(southRoom).attr("id");
+  }
+}
+
+var getWestId = function(currentLocationIndex) {
+  if($(currentSquare).hasClass("col-1")){
+    console.log("we're in the first column and have no west neighbor")
+  } else {
+    console.log("finding west neighbor...............................................................");
+    var index = $(currentSquare).index();
+    var westRoom = $('.grid-cell')[index - 1];
+    return $(westRoom).attr("id");
+  }
+}
+
+var getEastId = function(currentLocationIndex) {
+  if($(currentSquare).hasClass("col-5")){
+    console.log("we're in the last column and have no east neighbor")
+  } else {
+    console.log("finding east neighbor...............................................................");
+    var index = $(currentSquare).index();
+    var eastRoom = $('.grid-cell')[index + 1];
+    return $(eastRoom).attr("id");
+  }
+}
 
   $(document).on("submit", "#room-form", function(){
     event.preventDefault();
+    if(getNorthId(currentSquare)) {
+      $("#north_id").val(getNorthId(currentSquare))
+    }
+    if(getSouthId(currentSquare)) {
+      $("#south_id").val(getSouthId(currentSquare))
+    }
+    if(getEastId(currentSquare)) {
+      $("#east_id").val(getEastId(currentSquare))
+    }
+    if(getWestId(currentSquare)) {
+      $("#west_id").val(getWestId(currentSquare))
+    }
+    console.log($("#room-form").html());
     var url = $('#room-form').attr('action');
     var data = $('#room-form').serialize();
     $.ajax({
@@ -97,13 +155,19 @@ $(".clickable").on("click", function(){
         // reference back to that same div--change its ID to the ID of the room we created
         //  and change its color
         //  re-bind div click thing
-        $("#room-form-container").empty();
-        console.log("yay we got a response!");
+        $(currentSquare).css("background-color", "green");
+        $(currentSquare).attr('id', response.room_id);
         console.log(response);
+        $("#room-form-container").empty();
+        // console.log("yay we got a response!");
+        // console.log(response);
+        //  find the last square we clicked on from window.lastSquareClicked
+        // Add an id field to a square with the value of room.id
+        // Also remove clickable from the classes!
+        //  change that square's id to the room id we just made
+        // window.lastSquareSaved === window.lastSquareClicked
       }
     });
   });
 });
-
-// style="background-color: blue; background-position: initial initial; background-repeat: initial initial;"
 
