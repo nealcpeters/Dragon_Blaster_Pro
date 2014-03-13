@@ -69,8 +69,11 @@ $(function(){
     },
   });
 
-$(".grid-cell").on("click", function(){
+$(".clickable").on("click", function(){
   $(this).css("background", "blue");
+  // save which div we clicked on here
+  // unbind this from div clicks (remove class clickable)
+  // search for neighbors
   $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>");
 })
 
@@ -84,6 +87,10 @@ $(".grid-cell").on("click", function(){
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: data,
       success: function(response){
+        // reference back to that same div--change its ID to the ID of the room we created
+        //  and change its color
+        //  re-bind div click thing
+        $("#room-form-container").empty();
         console.log("yay we got a response!");
         console.log(response);
       }
