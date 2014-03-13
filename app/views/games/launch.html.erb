@@ -1,0 +1,17 @@
+<h2>Game Launch</h2>
+
+<%= link_to 'Create Hero', new_user_hero_path(current_user) %>
+
+<br>
+<br>
+
+<%= form_tag("/games", method: "post") do %>
+  <% current_user.heros.each do |hero| %>
+    <%= radio_button_tag(:name, "#{hero.name}") %>
+    <%= label_tag(:name, "#{hero.name}") %><br>
+  <% end %>
+
+  <%= submit_tag("Play Game") %>
+<% end %>
+
+

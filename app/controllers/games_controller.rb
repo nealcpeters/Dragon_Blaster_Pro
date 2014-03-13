@@ -37,4 +37,11 @@ class GamesController < ApplicationController
     render 'show'
   end
 
+  def launch
+  end
+
+  def create
+    render params.inspect
+  end
+
 end
