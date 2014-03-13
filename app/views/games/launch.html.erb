@@ -2,13 +2,15 @@
 
 <%= link_to 'Create Hero', new_user_hero_path(current_user) %>
 
+
 <br>
 <br>
 
 <%= form_tag("/games", method: "post") do %>
+  <p><%= hidden_field_tag :map_id, @map_id %></p>
   <% current_user.heros.each do |hero| %>
-    <%= radio_button_tag(:name, "#{hero.name}") %>
-    <%= label_tag(:name, "#{hero.name}") %><br>
+    <%= radio_button_tag(:hero_name, "#{hero.name}") %>
+    <%= label_tag(:hero_name, "#{hero.name}") %><br>
   <% end %>
 
   <%= submit_tag("Play Game") %>
