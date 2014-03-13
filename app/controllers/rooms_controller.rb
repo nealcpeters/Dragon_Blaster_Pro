@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:title, :description, :map_id)
+    params.permit(:title, :description, :map_id)
   end
 
 end

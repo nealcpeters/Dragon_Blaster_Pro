@@ -11,6 +11,7 @@ class MapsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @map = Map.new
+    @room = Room.new
   end
 
   def create
