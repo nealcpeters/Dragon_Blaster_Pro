@@ -68,7 +68,21 @@ $(function(){
 
 $(".grid-cell").on("click", function(){
   $(this).css("background", "blue");
-  $("#room-form").append("<form action='/users/" + window.userId + "/maps/" + window.mapId + "/room/new' method='POST'><input type='text' placeholder='Room Name' name='name'><textarea name='description' placeholder='Room Description'></textarea><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>")
+  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/room/new' method='POST'><input type='text' placeholder='Room Name' name='name'><textarea name='description' placeholder='Room Description'></textarea><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>")
+})
+
+$(document).on("submit", "#room-form", function(){
+  event.preventDefault();
+  var url = $('#room-form').attr('action');
+  var data = $('#room-form').serialize();
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: data,
+    success: function(response){
+      console.log("yay we got a response!");
+    }
+  })
 })
 
 })
