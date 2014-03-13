@@ -1,11 +1,13 @@
-<% if current_user %>
+<% if current_user  %>
+  <% if current_user.id == @user.id %>
+  
 
-  <h1><%= @user.username%>'s Maps:</h1>
+    <h1><%= @user.username%>'s Maps:</h1>
 
-   <% @user_maps.each do |map| %>
-    <p><%= map.title %> <%= link_to "Edit", edit_user_map_path(@user, map) %> <%= link_to "Delete", user_map_path(@user, map), method: :delete%></p>
-   <% end %>
-
+     <% @user_maps.each do |map| %>
+      <p><%= map.title %> <%= link_to "Edit", edit_user_map_path(@user, map) %> <%= link_to "Delete", user_map_path(@user, map), method: :delete%></p>
+     <% end %>
+  <% end %>
  <% else %>
    <%= link_to 'Sign-In', new_session_path %>
 <% end %>
