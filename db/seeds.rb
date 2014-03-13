@@ -15,4 +15,13 @@ User.first.maps.create(title: "Alex's Journey through Eastern Europe", descripti
 User.first.maps.create(title: "Dusty's Debate Team", description: 'Make a statement, end up in a debate')
 User.first.maps.create(title: "Dragon Blaster", description: 'Blast Dragons, Dick Maps, Save the Princess')
 
+Game.create(player_id: 1, map_id: 1)
+Hero.create(room_id: 1, game_id: 1, player_id: 1, name: 'Troy', description: 'We miss you')
+Room.create(map_id: 1, title: 'first', description: 'first_description', north_id: nil, south_id: nil, east_id: 2, west_id: nil)
+Room.create(map_id: 1, title: 'second', description: 'second_description', north_id: nil, south_id: nil, east_id: 3, west_id: 1)
+Room.create(map_id: 1, title: 'third', description: 'third_description', north_id: nil, south_id: nil, east_id: 4, west_id: 2)
+Room.create(map_id: 1, title: 'fourth', description: 'fourth_description', north_id: nil, south_id: nil, east_id: 5, west_id: 3)
+Room.create(map_id: 1, title: 'fifth', description: 'fifth_description', north_id: nil, south_id: nil, east_id: nil, west_id: 4)
+
+
 
