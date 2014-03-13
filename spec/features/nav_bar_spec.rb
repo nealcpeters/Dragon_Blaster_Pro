@@ -38,7 +38,5 @@ feature 'The Nav Bar' do
       click_link "Dragon Blaster"
       expect(page).to have_content("Welcome to Dragon Blaster!")
     end
-
-
   end
 end
