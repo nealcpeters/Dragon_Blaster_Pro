@@ -17,6 +17,16 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
   end
 
+  def edit
+    @user = User.find(session[:user_id])
+  end
+
+  def update
+    @user = User.find(session[:user_id])
+    @user.update_attributes(user_params)
+    redirect_to user_path(@user), notice: 'Profile Updated!'
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)

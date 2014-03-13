@@ -8,6 +8,8 @@
 
   <%= link_to "Create a Map", new_user_map_path(@user) %>
 
+  <%= link_to "Edit User Information", edit_user_path(@user) %>
+
 <% else %>
   <h1>You must log in to see this page.</h1>
   <%= link_to "Home", root_path %>
