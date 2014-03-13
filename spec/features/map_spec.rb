@@ -40,7 +40,7 @@ feature 'Map displays' do
   end
 
   context "create link works" do
-    it "taken to create map page" do
+    xit "taken to create map page" do
       visit "/users/new"
 
       expect {
@@ -58,7 +58,7 @@ feature 'Map displays' do
       expect(page).to have_content("Gameboard here!")
     end
 
-    it "deletes a user's maps when clickk delete" do
+    it "deletes a user's maps when click delete" do
       # user = User.create(username: 'abed', email: 'abed@greendale.com', password: 'password', password_confirmation: 'password')
       visit "/users/new"
 
