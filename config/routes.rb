@@ -7,7 +7,9 @@ DragonBlaster::Application.routes.draw do
 
   resources :sessions
   resources :users do
-    resources :maps
+    resources :maps do
+      resources :rooms
+    end
   end
 
   get '/all_maps', to: 'maps#all'
