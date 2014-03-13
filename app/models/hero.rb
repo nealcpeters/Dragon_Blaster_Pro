@@ -8,4 +8,20 @@ class Hero < ActiveRecord::Base
   belongs_to :room
   belongs_to :player, class_name: 'User'
   belongs_to :game
+
+  def move_hero_east
+    # Hero
+  end
+
+  def move_hero_west
+
+  end
+
+  def move_hero_south
+
+  end
+
+  def move_hero_north
+
+  end
 end
