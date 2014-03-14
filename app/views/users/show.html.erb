@@ -2,15 +2,15 @@
 
   <h1><%= @user.username %>'s Profile</h1>
 
-  <%= link_to "Games", all_games_path %>
+  <p class = "link_list"><%= link_to "Games", all_games_path %></p>
 
-  <%= link_to "My Maps", user_maps_path(@user) %>
+  <p class = "link_list"><%= link_to "My Maps", user_maps_path(@user) %></p>
 
-  <%= link_to "Create a Map", new_user_map_path(@user) %>
+  <p class = "link_list"><%= link_to "Create a Map", new_user_map_path(@user) %></p>
 
-  <%= link_to "Edit User Information", edit_user_path(@user) %>
+  <p class = "link_list"><%= link_to "Edit User Information", edit_user_path(@user) %></p>
 
-  <%= link_to "Check out your Heroes", user_heros_path(@user) %>
+  <p class = "link_list"><%= link_to "Check out your Heroes", user_heros_path(@user) %></p>
 
 <% else %>
   <h1>You must log in to see this page.</h1>
