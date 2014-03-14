@@ -28,4 +28,12 @@ class Game < ActiveRecord::Base
     room = Room.find(self.room_id)
     self.update(room_id: room.room_to_the_north.id)
   end
+
+  def add_item_to_inventory
+    room = Room.find(self.room_id)
+    # if room.items.include?(item)
+     # hero.items << item
+     # room.items.delete(item)
+    # end
+  end
 end
