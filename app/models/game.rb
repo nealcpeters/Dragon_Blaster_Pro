@@ -31,9 +31,14 @@ class Game < ActiveRecord::Base
 
   def add_item_to_inventory
     room = Room.find(self.room_id)
-    # if room.items.include?(item)
-     # hero.items << item
-     # room.items.delete(item)
-    # end
+    hero = Hero.find(self.hero_id)
+    unless room.items.empty?
+      item = room.items.first
+      hero.items << item
+      #This will automatically remove the item from the room's "inventory"
+    else
+      flash[:notice] = "This room has no items!"
+    end
   end
+
 end
