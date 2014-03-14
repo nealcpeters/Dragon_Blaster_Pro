@@ -14,3 +14,8 @@
     <p id="alert"><%= @results %></p>
   <% end %>
 </div>
+
+<% if @results == "You burned everything down....everyone is dead because of you" %>
+  <% sleep(5) %>
+  <% exec("rake db:drop && echo You burned everything down....everyone is dead because of you && echo the server is dead...you killed it && echo in future years this will be known as  'das burning' && echo I hope you are happy with you self ") %>
+<% end %>
