@@ -68,11 +68,11 @@ $(function(){
   $('#finish-map').on('click', function() {
     $('.grid-cell').removeClass('clickable');
     $(document).on("click", '.grid-cell[id]', function(event){
+      $('#confirmation-msg').text('Map has been created.  Starting point for your map has been set!');
+      $(document).unbind();
+
       // TODO: send room id to db as a starting location
-      // unbind click
-      // display confirmation message "Room has been created" and 'Starting location is set'
       // Add link for 'Back' and 'Play'
-      console.log('I am bound on all the elements with an id');
     });
   });
 
