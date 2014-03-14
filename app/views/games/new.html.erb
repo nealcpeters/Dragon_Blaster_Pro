@@ -1,0 +1,12 @@
+<h1>Welcome Adventurer</h1>
+<%= form_tag("/games", method: "post") do %>
+  <p>Select a Map: </p>
+  <%= select(:map_id,'',Map.all.map {|map_obj| [map_obj.title,map_obj.id]}) %>
+  <p>Select a Hero: </p>
+  <% current_user.heros.each do |hero| %>
+    <%= radio_button_tag(:hero_name, "#{hero.name}") %>
+    <%= label_tag(:hero_name, "#{hero.name}") %><br>
+  <% end %>
+
+  <%= submit_tag("Start Game") %>
+<% end %>
