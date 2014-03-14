@@ -198,6 +198,78 @@ feature 'Hero routes' do
       
     end
 
+    it "input of 'north' moves hero to the north" do
+      visit "/users/new"
+
+      fill_in 'user_username', with: "abed"
+      fill_in 'user_email', with: "abed@greendale.com"
+      fill_in 'user_password', with: "password"
+      fill_in 'user_password_confirmation', with: "password"
+      click_button "Create User"
+
+      user = User.find_by_username("abed")
+      map = Map.create(starting_room_id: 1, creator_id: user.id, title: 'map', description: 'a map for all maps')
+      room_north = Room.create(map_id: map.id, title: 'it went north', description: 'fun fun fun')
+      room = Room.create(map_id: map.id, title: 'bob', description: 'fun fun fun', north_id: room_north.id)
+      hero = Hero.create(player_id: User.find_by_username("abed").id, name: "tester", description: 'best game on earth')
+      map.starting_room_id = room.id
+      map.save
+
+      visit "/all_maps"
+
+      click_link("#{map.title}")
+
+      click_link("Play Game")
+
+      page.choose 'hero_name_tester'
+
+      click_button "Play Game"      
+
+      fill_in 'user_input', with: "north"
+
+      click_button "Submit"
+
+      expect(page).to have_content("#{room_north.title}")
+
+      
+    end
+
+    it "input of 'south' moves hero to the south" do
+      visit "/users/new"
+
+      fill_in 'user_username', with: "abed"
+      fill_in 'user_email', with: "abed@greendale.com"
+      fill_in 'user_password', with: "password"
+      fill_in 'user_password_confirmation', with: "password"
+      click_button "Create User"
+
+      user = User.find_by_username("abed")
+      map = Map.create(starting_room_id: 1, creator_id: user.id, title: 'map', description: 'a map for all maps')
+      room_south = Room.create(map_id: map.id, title: 'it went south', description: 'fun fun fun')
+      room = Room.create(map_id: map.id, title: 'bob', description: 'fun fun fun', south_id: room_south.id)
+      hero = Hero.create(player_id: User.find_by_username("abed").id, name: "tester", description: 'best game on earth')
+      map.starting_room_id = room.id
+      map.save
+
+      visit "/all_maps"
+
+      click_link("#{map.title}")
+
+      click_link("Play Game")
+
+      page.choose 'hero_name_tester'
+
+      click_button "Play Game"      
+
+      fill_in 'user_input', with: "south"
+
+      click_button "Submit"
+
+      expect(page).to have_content("#{room_south.title}")
+
+      
+    end
+
   end
 
 end
