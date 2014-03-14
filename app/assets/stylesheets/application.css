@@ -70,6 +70,25 @@ nav a {
   margin: 0;
 }
 
+.body_container {
+  width: 90%;
+  padding: 1em 3em;
+}
+
+.link_list {
+  text-indent: 2em;
+}
+
+.link_list a{
+  color: black;
+  text-decoration: none;
+}
+
+.link_list a:hover{
+  background-color: pink;
+  text-decoration: none;
+}
+
 /*div #gameboard {
   width: 350px; margin: 20px 0;
 }*/
