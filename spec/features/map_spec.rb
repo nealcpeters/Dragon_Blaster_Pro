@@ -171,6 +171,7 @@ feature 'Map displays' do
 
       expect(page).to have_content("#{user.username}")
     end
-
+    
+    
   end
 end
