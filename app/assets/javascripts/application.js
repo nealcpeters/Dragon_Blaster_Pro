@@ -36,10 +36,6 @@
 //     that is the same as its corresponding room's id (aka the room we just made)
 //   we hide the form and maybe do a confirmation msg?
 
-//   def change_east_rooms
-//     west.east_id = room.id
-//   end
-
 $(function(){
   $("#dialog-form").dialog({
     autoOpen: true,
@@ -69,6 +65,17 @@ $(function(){
     },
   });
 
+  $('#finish-map').on('click', function() {
+    $('.grid-cell').removeClass('clickable');
+    $(document).on("click", '.grid-cell[id]', function(event){
+      // TODO: send room id to db as a starting location
+      // unbind click
+      // display confirmation message "Room has been created" and 'Starting location is set'
+      // Add link for 'Back' and 'Play'
+      console.log('I am bound on all the elements with an id');
+    });
+  });
+
 $(document).on("click", ".clickable", function(event){
   var that = event.target;
   $('.grid-cell').filter(function(index){
@@ -81,39 +88,35 @@ $(document).on("click", ".clickable", function(event){
 })
 
 function getNorthId(currentSquare){
-  if(! $(currentSquare).hasClass("row-1")){
-    console.log("finding north neighbor...............................................................");
-    var index = $(currentSquare).index();
-    var northRoom = $('.grid-cell')[index - 5];
-    return $(northRoom).attr("id");
-  }
+  if(! $(currentSquare).hasClass("row-1")){
+    var index = $(currentSquare).index();
+    var northRoom = $('.grid-cell')[index - 5];
+    return $(northRoom).attr("id");
+  }
 };
 
 function getSouthId (currentLocationIndex) {
-  if(! $(currentSquare).hasClass("row-5") ){
-    console.log("finding south neighbor...............................................................");
-    var index = $(currentSquare).index();
-    var southRoom = $('.grid-cell')[index + 5];
-    return $(southRoom).attr("id");
-  }
+  if(! $(currentSquare).hasClass("row-5") ){
+    var index = $(currentSquare).index();
+    var southRoom = $('.grid-cell')[index + 5];
+    return $(southRoom).attr("id");
+  }
 }
 
 var getWestId = function(currentLocationIndex) {
-  if(! $(currentSquare).hasClass("col-1")){
-    console.log("finding west neighbor...............................................................");
-    var index = $(currentSquare).index();
-    var westRoom = $('.grid-cell')[index - 1];
-    return $(westRoom).attr("id");
-  }
+  if(! $(currentSquare).hasClass("col-1")){
+    var index = $(currentSquare).index();
+    var westRoom = $('.grid-cell')[index - 1];
+    return $(westRoom).attr("id");
+  }
 }
 
 var getEastId = function(currentLocationIndex) {
-  if(! $(currentSquare).hasClass("col-5")){
-    console.log("finding east neighbor...............................................................");
-    var index = $(currentSquare).index();
-    var eastRoom = $('.grid-cell')[index + 1];
-    return $(eastRoom).attr("id");
-  }
+  if(! $(currentSquare).hasClass("col-5")){
+    var index = $(currentSquare).index();
+    var eastRoom = $('.grid-cell')[index + 1];
+    return $(eastRoom).attr("id");
+  }
 }
 
   $(document).on("submit", "#room-form", function(){
@@ -144,10 +147,6 @@ var getEastId = function(currentLocationIndex) {
         $(currentSquare).removeClass('clickable');
         $(currentSquare).attr('id', response.room_id);
         $("#room-form-container").empty();
-
-        // Also remove clickable from the classes!
-        //  change that square's id to the room id we just made
-        // window.lastSquareSaved === window.lastSquareClicked
       }
     });
   });

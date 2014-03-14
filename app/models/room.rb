@@ -28,5 +28,4 @@ class Room < ActiveRecord::Base
     room_to_the_east.west_id = id if room_to_the_east
     room_to_the_west.east_id = id if room_to_the_west
   end
-
 end
