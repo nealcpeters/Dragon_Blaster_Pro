@@ -38,7 +38,14 @@ class Game < ActiveRecord::Base
       #This will automatically remove the item from the room's "inventory"
     else
       flash[:notice] = "This room has no items!"
+      #redirect to some view
     end
+  end
+
+  #how do we make sure we are acting on duplicates of the rooms, not the master copy of the rooms when we alter inventories?
+
+  def drop_item(item)
+    #this will take an item from the hero's inventory and place it in the current room
   end
 
 end
