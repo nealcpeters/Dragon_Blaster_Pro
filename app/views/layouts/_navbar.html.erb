@@ -5,8 +5,8 @@
         <li><%= link_to "#{ current_user.username }'s Profile", user_path(current_user) %></li>
         <li><%= link_to 'Sign-Out',  session_path(current_user), method: :delete %></li>
       <% else %>
-        <li><%= link_to 'Register', users_path %></li>
-        <li><%= link_to 'Sign-In', sessions_path %></li>
+        <li><%= link_to 'Register', new_user_path %></li>
+        <li><%= link_to 'Sign-In', new_session_path %></li>
       <% end %>
     </ul>
   </nav>
