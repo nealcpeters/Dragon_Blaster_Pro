@@ -5,8 +5,8 @@
 <% end %>
 <ul>
   <% unless current_user %>
-    <li><%= link_to 'Register', new_user_path %></li>
-    <li><%= link_to 'Sign-In', new_session_path %></li>
+    <li><%= link_to 'New User?', new_user_path %></li>
+    <li><%= link_to 'Existing User?', new_session_path %></li>
   <% else %>
        <li><%= link_to 'Sign-Out',  session_path(current_user), method: :delete %></li>
 <% end %>
