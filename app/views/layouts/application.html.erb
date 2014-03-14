@@ -12,6 +12,10 @@
 </head>
 <body>
   <%= render partial: 'layouts/navbar' %>
+  <% if notice || alert %>
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
+  <% end %>
 
 <%= yield %>
 
