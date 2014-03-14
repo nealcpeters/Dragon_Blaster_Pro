@@ -1,0 +1,11 @@
+<%= form_for [@user, @hero] do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %>
+  <br><br>
+
+  <%= f.label :description, "Your hero's bio" %>:
+  <%= f.text_area :description %>
+  <br><br>
+
+  <%= f.submit "Create Hero" %>
+<% end %>
