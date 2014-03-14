@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Map displays' do
-  before :each do 
+  before :each do
     visit "/users/new"
 
     fill_in 'user_username', with: "abed"
@@ -10,9 +10,11 @@ feature 'Map displays' do
     fill_in 'user_password_confirmation', with: "password"
     click_button "Create User"
 
-    @user = User.find_by_username("abed")
-    @map = Map.create(starting_room_id: 1, creator_id: @user.id, title: 'map', description: 'a map for all maps')
-
+      @user = User.find_by_username("abed")
+      @map = Map.create(starting_room_id: 1, creator_id: @user.id, title: 'map', description: 'a map for all maps')
+      @hero = Hero.create(player_id: User.find_by_username("abed").id, name: "tester", description: 'best game on earth')
+      @room = Room.create(map_id: @map.id, title: "room title", description: "room description")
+      @game = Game.create(player_id: @user.id, map_id: @map.id, room_id: @room.id, hero_id: @hero.id)
   end
 
   context "on user's map's homepage" do
@@ -30,7 +32,7 @@ feature 'Map displays' do
 
   context "on all maps page" do
     it "sees a list of all created maps" do
-      visit "/all_maps"
+      click_link("Games")
       expect(page).to have_content("#{@map.title}")
     end
   end
@@ -74,23 +76,20 @@ feature 'Map displays' do
 
   context "can click link to view a map on all maps page" do
     it "should show map title" do
-      visit "/all_maps"
-      click_link("#{@map.title}")
+      visit "/all_games"
       expect(page).to have_content("#{@map.title}")
     end
 
     it "should show map description" do
-      visit "/all_maps"
-      click_link("#{@map.title}")
+      visit "/all_games"
       expect(page).to have_content("#{@map.description}")
     end
 
     it "should show map creator username" do
-      visit "/all_maps"
-      click_link("#{@map.title}")
+      visit "/all_games"
       expect(page).to have_content("#{@user.username}")
     end
-    
-    
+
+
   end
 end
