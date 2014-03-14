@@ -3,6 +3,7 @@ class Room < ActiveRecord::Base
   validates :title, presence: :true
   validates :description, presence: :true
 
+  has_many :items, as: :owner
   belongs_to :map
 
   def room_to_the_west

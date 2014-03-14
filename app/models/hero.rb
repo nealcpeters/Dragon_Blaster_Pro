@@ -5,5 +5,6 @@ class Hero < ActiveRecord::Base
 
   belongs_to :player, class_name: 'User'
   has_many :games
+  has_many :items, as: :owner
 
 end
