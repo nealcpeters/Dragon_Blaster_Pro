@@ -45,6 +45,8 @@ class GamesController < ApplicationController
       end
     when /\w*look/
       @results = "#{@game.room.description}"
+    when "wildfire"
+      @results = "You burned everything down....everyone is dead because of you"
     else
       @results = "I don't know that command."
     end
