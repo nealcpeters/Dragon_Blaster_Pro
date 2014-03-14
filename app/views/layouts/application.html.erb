@@ -2,11 +2,11 @@
 <html>
 <head>
   <title >DragonBlaster</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag  "dragon_font/stylesheet.css", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <style type="text/css" src='normalize.css'></style>
-  <style type="text/css" src='app/assets/dragon_font/specimen_files/stylesheet.css'></style>
   <script src="//code.jquery.com/jquery-1.9.1.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <%= csrf_meta_tags %>
