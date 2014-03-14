@@ -7,7 +7,7 @@ class HerosController < ApplicationController
   end
 
   def index
-    @user = current_user
+    @user = User.find(session[:user_id])
     @hero = @user.heros.all
   end
 
