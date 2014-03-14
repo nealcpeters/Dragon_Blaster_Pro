@@ -3,3 +3,5 @@
 <p>Map Title: <%= @map.title %></p>
 <p>Map Description: <%= @map.description %></p>
 <p>Map Creator: <%= @user.username %></p>
+
+<%= link_to "Play Game", games_launch_path(@map) %>
