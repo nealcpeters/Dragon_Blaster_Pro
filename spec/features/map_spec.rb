@@ -3,8 +3,8 @@ require 'spec_helper'
 feature 'Map displays' do
   context "on user's map's homepage" do
     it "not see a list of user's maps without being logged in" do
-      User.create(username: 'abed', email: 'abed@greendale.com', password: 'password', password_confirmation: 'password')
-      map = Map.create(starting_room_id: 1, creator_id: 1, title: 'map', description: 'a map for all maps')
+      user = User.create(username: 'abed', email: 'abed@greendale.com', password: 'password', password_confirmation: 'password')
+      map = Map.create(starting_room_id: 1, creator_id: user.id, title: 'map', description: 'a map for all maps')
       visit "/users/#{map.creator_id}/maps"
       expect(page).to have_no_content("#{map.title}")
     end
