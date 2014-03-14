@@ -1,5 +1,7 @@
 class HerosController < ApplicationController
 
+
+
   def show
     @hero = Hero.find(params[:id])
   end
