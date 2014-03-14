@@ -16,23 +16,37 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     case @action
     when /\w*east/
-      @game.move_hero_east
-      @game.save
-      @results = "You go east"
+      if @game.move_hero_east
+        @game.save
+        @results = "You go east"
+      else
+        flash[:alert] = "There is no room to the east."
+      end
     when /\w*west/
-      @game.move_hero_west
-      @game.save
-      @results = "You go west"
+      if @game.move_hero_west
+        @game.save
+        @results = "You go west"
+      else
+        flash[:alert] = "There is no room to the west."
+      end
     when /\w*north/
-      @game.move_hero_north
-      @game.save
-      @results = "You go north"
+      if @game.move_hero_north
+        @game.save
+        @results = "You go north"
+      else
+        flash[:alert] = "There is no room to the north."
+      end
     when /\w*south/
-      @game.move_hero_south
-      @game.save
-      @results = "You go south"
+      if @game.move_hero_south
+        @game.save
+        @results = "You go south"
+      else
+        flash[:alert] = "There is no room to the south."
+      end
     when /\w*look/
       @results = "You see #{@game.room.description}"
+    else
+      flash[:alert] = "I don't know that command."
     end
     @map = @game.map
     @player = @game.player

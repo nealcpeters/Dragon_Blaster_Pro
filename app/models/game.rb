@@ -11,37 +11,37 @@ class Game < ActiveRecord::Base
 
   def move_hero_east
     room = Room.find(self.room_id)
-    if room.room_to_the_east.id
+    if room.room_to_the_east
       self.update(room_id: room.room_to_the_east.id)
     else
-      flash[:notice] = "There is no room to the east."
+      false
     end
   end
 
   def move_hero_west
     room = Room.find(self.room_id)
-     if room.room_to_the_west.id
+     if room.room_to_the_west
       self.update(room_id: room.room_to_the_west.id)
     else
-      flash[:notice] = "There is no room to the west."
+      false
     end
   end
 
   def move_hero_south
     room = Room.find(self.room_id)
-     if room.room_to_the_south.id
+     if room.room_to_the_south
       self.update(room_id: room.room_to_the_south.id)
     else
-      flash[:notice] = "There is no room to the south."
+      false
     end
   end
 
   def move_hero_north
     room = Room.find(self.room_id)
-    if room.room_to_the_north.id
+    if room.room_to_the_north
       self.update(room_id: room.room_to_the_north.id)
     else
-      flash[:notice] = "There is no room to the north."
+      false
     end
   end
 
@@ -53,7 +53,7 @@ class Game < ActiveRecord::Base
       hero.items << item
       #This will automatically remove the item from the room's "inventory"
     else
-      flash[:notice] = "This room has no items!"
+      #flash[:alert] = "This room has no items!" flash needs to go in the controller
       #redirect to some view
     end
   end
