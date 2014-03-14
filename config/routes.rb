@@ -19,7 +19,7 @@ DragonBlaster::Application.routes.draw do
 
   get '/all_games', to: 'games#all', as: 'all_games'
 
-  get '/games/launch/:game_id', to: 'games#launch', as: "games_launch"
+  post '/games/launch', to: 'games#launch', as: "games_launch"
 
 
 end

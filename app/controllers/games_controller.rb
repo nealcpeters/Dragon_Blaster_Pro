@@ -56,8 +56,12 @@ class GamesController < ApplicationController
   end
 
   def launch
-    game = Game.where(player_id: current_user.id,id: params[:game_id]).first
-    if game
+    @game = Game.where(player_id: current_user.id,id: params[:game_id]).first
+    if @game
+      @map = @game.map
+      @player = @game.player
+      @room = @game.room
+      @hero = @game.hero
       render 'show'
     else
       flash[:notice] = "That game wasn't located"
