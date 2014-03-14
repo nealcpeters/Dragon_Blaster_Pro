@@ -72,7 +72,7 @@ $(function(){
 $(document).on("click", ".clickable", function(event){
   var that = event.target;
   $('.grid-cell').filter(function(index){
-    return $(that).css('background-color') == "rgb(0, 0, 255)";
+    return $(this).css('background-color') == "rgb(0, 0, 255)";
   }).css('background-color', 'white');
   currentSquare = that;
   $(that).css("background", "blue");
