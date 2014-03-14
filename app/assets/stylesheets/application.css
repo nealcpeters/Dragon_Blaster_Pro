@@ -23,7 +23,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: pink;
+  background-image: url('http://www.colourbox.com/preview/5789816-583545-pink-python-snake-skin-texture-background.jpg');
   margin: 0;
 }
 
@@ -45,7 +45,7 @@ nav li {
 
 nav a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 #dialog-form {
@@ -79,12 +79,12 @@ nav a {
   text-indent: 2em;
 }
 
-.link_list a{
-  color: black;
+a{
+  color: purple;
   text-decoration: none;
 }
 
-.link_list a:hover{
+a:hover{
   background-color: pink;
   text-decoration: none;
 }
@@ -92,10 +92,28 @@ nav a {
 #back-or-play, #finish-map {
   display: none;
 }
-/*
-#finish-map {
-  display: none;
-}*/
+
+.profile_image {
+  float: right;
+  margin-bottom: 0%;
+  margin-right: 1em;
+}
+
+.profile_image img{
+  width:70%;
+  height:70%;
+}
+
+#alert {
+  padding: 1em;
+  color: pink;
+  background-color: black;
+  width: 25%;
+  margin-top: 2em;
+  text-align: center;
+  border: .5em solid pink;
+  border-radius: 10em;
+}
 
 /*div #gameboard {
   width: 350px; margin: 20px 0;

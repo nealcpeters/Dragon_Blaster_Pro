@@ -20,33 +20,35 @@ class GamesController < ApplicationController
         @game.save
         @results = "You go east"
       else
-        flash[:alert] = "There is no room to the east."
+        @results = "There is no room to the east."
       end
     when /\w*west/
       if @game.move_hero_west
         @game.save
         @results = "You go west"
       else
-        flash[:alert] = "There is no room to the west."
+        @results = "There is no room to the west."
       end
     when /\w*north/
       if @game.move_hero_north
         @game.save
         @results = "You go north"
       else
-        flash[:alert] = "There is no room to the north."
+        @results = "There is no room to the north."
       end
     when /\w*south/
       if @game.move_hero_south
         @game.save
         @results = "You go south"
       else
-        flash[:alert] = "There is no room to the south."
+        @results = "There is no room to the south."
       end
     when /\w*look/
-      @results = "You see #{@game.room.description}"
+      @results = "#{@game.room.description}"
+    when "wildfire"
+      @results = "You burned everything down....everyone is dead because of you"
     else
-      flash[:alert] = "I don't know that command."
+      @results = "I don't know that command."
     end
     @map = @game.map
     @player = @game.player
