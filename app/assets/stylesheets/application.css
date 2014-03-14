@@ -89,6 +89,14 @@ nav a {
   text-decoration: none;
 }
 
+#back-or-play, #finish-map {
+  display: none;
+}
+/*
+#finish-map {
+  display: none;
+}*/
+
 /*div #gameboard {
   width: 350px; margin: 20px 0;
 }*/

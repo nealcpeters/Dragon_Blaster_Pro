@@ -23,6 +23,14 @@ class MapsController < ApplicationController
     end
   end
 
+  def update
+    map = Map.find(params[:id])
+    map.starting_room_id = params["starting_room_id"]
+    if map.save
+      render :json => {status: "super fun times"}
+    end
+  end
+
   def map_params
     params.require(:map).permit(:title, :description, :creator_id)
   end
