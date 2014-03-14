@@ -69,52 +69,52 @@ $(function(){
     },
   });
 
-  $(document).on("click", ".clickable", function(event){
-    var that = event.target;
-    $('.grid-cell').filter(function(index){
-      return $(that).css('background-color') == "rgb(0, 0, 255)";
-    }).css('background-color', 'white');
-    currentSquare = that;
-    $(that).css("background", "blue");
-    $("#room-form-container").empty();
-    $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input id='north_id' type='hidden' name='north_id'><input id='south_id' type='hidden' name='south_id'><input id='east_id' type='hidden' name='east_id'><input id='west_id' type='hidden' name='west_id'><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>");
-  })
+$(document).on("click", ".clickable", function(event){
+  var that = event.target;
+  $('.grid-cell').filter(function(index){
+    return $(this).css('background-color') == "rgb(0, 0, 255)";
+  }).css('background-color', 'white');
+  currentSquare = that;
+  $(that).css("background", "blue");
+  $("#room-form-container").empty();
+  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input id='north_id' type='hidden' name='north_id'><input id='south_id' type='hidden' name='south_id'><input id='east_id' type='hidden' name='east_id'><input id='west_id' type='hidden' name='west_id'><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>");
+})
 
-  function getNorthId(currentSquare){
-    if(! $(currentSquare).hasClass("row-1")){
-      console.log("finding north neighbor...............................................................");
-      var index = $(currentSquare).index();
-      var northRoom = $('.grid-cell')[index - 5];
-      return $(northRoom).attr("id");
-    }
-  };
+function getNorthId(currentSquare){
+  if(! $(currentSquare).hasClass("row-1")){
+    console.log("finding north neighbor...............................................................");
+    var index = $(currentSquare).index();
+    var northRoom = $('.grid-cell')[index - 5];
+    return $(northRoom).attr("id");
+  }
+};
 
-  function getSouthId (currentLocationIndex) {
-    if(! $(currentSquare).hasClass("row-5") ){
-      console.log("finding south neighbor...............................................................");
-      var index = $(currentSquare).index();
-      var southRoom = $('.grid-cell')[index + 5];
-      return $(southRoom).attr("id");
-    }
-  };
+function getSouthId (currentLocationIndex) {
+  if(! $(currentSquare).hasClass("row-5") ){
+    console.log("finding south neighbor...............................................................");
+    var index = $(currentSquare).index();
+    var southRoom = $('.grid-cell')[index + 5];
+    return $(southRoom).attr("id");
+  }
+}
 
-  var getWestId = function(currentLocationIndex) {
-    if(! $(currentSquare).hasClass("col-1")) {
-      console.log("finding west neighbor...............................................................");
-      var index = $(currentSquare).index();
-      var westRoom = $('.grid-cell')[index - 1];
-      return $(westRoom).attr("id");
-    }
-  };
+var getWestId = function(currentLocationIndex) {
+  if(! $(currentSquare).hasClass("col-1")){
+    console.log("finding west neighbor...............................................................");
+    var index = $(currentSquare).index();
+    var westRoom = $('.grid-cell')[index - 1];
+    return $(westRoom).attr("id");
+  }
+}
 
-  var getEastId = function(currentLocationIndex) {
-    if(! $(currentSquare).hasClass("col-5")) {
-      console.log("finding east neighbor...............................................................");
-      var index = $(currentSquare).index();
-      var eastRoom = $('.grid-cell')[index + 1];
-      return $(eastRoom).attr("id");
-    }
-  };
+var getEastId = function(currentLocationIndex) {
+  if(! $(currentSquare).hasClass("col-5")){
+    console.log("finding east neighbor...............................................................");
+    var index = $(currentSquare).index();
+    var eastRoom = $('.grid-cell')[index + 1];
+    return $(eastRoom).attr("id");
+  }
+}
 
   $(document).on("submit", "#room-form", function(){
     event.preventDefault();
