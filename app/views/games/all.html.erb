@@ -9,9 +9,8 @@
     <p>Title: <%= game.map.title%></p>
     <p>Map Description: <%= game.map.description%></p>
     <p>Current Room: <%= game.room.title %></p>
-    <%= form_tag("/games", method: "post") do %>
-      <%= hidden_field_tag :map_id, game.map.id %>
-      <%= hidden_field_tag :hero_name, game.hero.name %>
+    <%= form_tag("/games/launch", method: "post") do %>
+      <%= hidden_field_tag :game_id, game.id %>
 
       <%= submit_tag("Continue Game") %>
     <% end %>
