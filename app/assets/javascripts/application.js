@@ -140,6 +140,7 @@ var getEastId = function(currentLocationIndex) {
       data: data,
       success: function(response){
         $(currentSquare).css("background-color", "green");
+        $(currentSquare).text(response.room_name)
         $(currentSquare).removeClass('clickable');
         $(currentSquare).attr('id', response.room_id);
         $("#room-form-container").empty();

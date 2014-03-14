@@ -3,8 +3,8 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     if @room.save
-      # @room.update_neighbors
-      render :json => {room_id: @room.id}
+      @room.update_neighbors
+      render :json => {room_id: @room.id, room_name: @room.title}
     else
       render :json => {room_id: nil}
     end
