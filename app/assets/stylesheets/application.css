@@ -99,6 +99,17 @@ a:hover{
   width:70%;
   height:70%;
 }
+
+#alert {
+  padding: 1em;
+  color: pink;
+  background-color: black;
+  width: 25%;
+  margin-top: 2em;
+  text-align: center;
+  border: .5em solid pink;
+  border-radius: 10em;
+}
 /*div #gameboard {
   width: 350px; margin: 20px 0;
 }*/
