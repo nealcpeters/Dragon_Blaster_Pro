@@ -1,0 +1,22 @@
+<h1>Game Listing:</h1>
+
+<p>Start New Game:</p>
+<p><%= link_to "Create A Game", new_game_path %></p>
+<hr />
+<p>Current Games:</p>
+ <% @games.each do |game| %>
+    <p>Game ID: <%= game.id%> Hero: <%= game.hero.name %></p>
+    <p>Title: <%= game.map.title%></p>
+    <p>Map Description: <%= game.map.description%></p>
+    <p>Current Room: <%= game.room.title %></p>
+    <%= form_tag("/games", method: "post") do %>
+      <%= hidden_field_tag :map_id, game.map.id %>
+      <%= hidden_field_tag :hero_name, game.hero.name %>
+
+      <%= submit_tag("Continue Game") %>
+    <% end %>
+ <% end %>
+<!-- authenticity_token:hfnrAuHmeItBZ4zUF46EIrG1VNEn2JUzKtm0LjN+KTk=
+map_id:1
+hero_name:Professor Solorio
+commit:Play Game -->
