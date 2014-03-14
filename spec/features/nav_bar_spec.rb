@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 feature 'The Nav Bar' do
-  
+
   context "when Logged In After Creating a User" do
-    
-  before :each do 
+
+  before :each do
       visit "/users/new"
       fill_in 'user_username', with: "Abed"
       fill_in 'user_email', with: "abed@greendale.com"
@@ -48,7 +48,12 @@ feature 'The Nav Bar' do
       click_link "Register"
       expect(page).to have_content("Sign Up")
     end
-  
+
+    scenario "the nav bar should exist" do
+      visit "/"
+      expect(page).to have_content("Dragon Blaster")
+    end
+
   end
 
 end
