@@ -89,6 +89,10 @@ a:hover{
   text-decoration: none;
 }
 
+#back-or-play, #finish-map {
+  display: none;
+}
+
 .profile_image {
   float: right;
   margin-bottom: 0%;
@@ -110,7 +114,6 @@ a:hover{
   border: .5em solid pink;
   border-radius: 10em;
 }
-
 
 /*div #gameboard {
   width: 350px; margin: 20px 0;

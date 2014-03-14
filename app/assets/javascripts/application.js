@@ -16,30 +16,6 @@
 //= require turbolinks
 //= require_tree .
 
-// * we go to the creation page
-// * it prompts us for the map title and description
-// * when that's submitted, it goes to the server and creates a new map
-// * when the map info comes back, we save the map id to the window
-
-// * then we click on a div square to bring up a room creation form
-// on click:
-//   * the div changes to pending color
-//   * a room creation form pops up
-//   the javascript checks the four divs around the div you clicked on
-//     for each div, if that div has an id, the javascript fills in the hidden room-creation form field corresponding
-//       to that room (north_id, south_id, east_id, or west_id) with that div's id
-//   we submit the form, and it goes to the server
-//   the server makes a new room with the information we gave it
-//   then, it finds the north/south/east/west rooms (if any) by the ids we gave and changes their south/north/west/east
-//     ids to the id of the room we just created
-//   then we return to the browser, change the color of the div to the "completed" color, and add an id to the div
-//     that is the same as its corresponding room's id (aka the room we just made)
-//   we hide the form and maybe do a confirmation msg?
-
-//   def change_east_rooms
-//     west.east_id = room.id
-//   end
-
 $(function(){
   $("#dialog-form").dialog({
     autoOpen: true,
@@ -50,7 +26,7 @@ $(function(){
     buttons: {
       "Submit": function() {
         var data = $('#new_map').serialize();
-        var url = $('#new_map').attr('action');
+        url = $('#new_map').attr('action');
         window.userId = $('#map_creator_id').val();
         $.ajax({
           type: 'post',
@@ -69,6 +45,31 @@ $(function(){
     },
   });
 
+  $('#finish-map').on('click', function() {
+    $('.grid-cell').removeClass('clickable');
+    $('#message').text("Wow, such map!  Click on the square you'd like your player to start in, and you'll be good to go.")
+    $('.grid-cell').filter(function(index){
+      return $(this).css('background-color') == "rgb(0, 0, 255)";
+    }).css('background-color', 'white');
+    $("#finish-map").hide();
+    $("#room-form-container").empty();
+    $(document).on("click", '.grid-cell[id]', function(event){
+      var data = {"starting_room_id": $(this).attr('id')};
+      $.ajax({
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        url: url + '/' + window.mapId,
+        data: data,
+        type: "PATCH",
+        success: function(serverResponse){
+          console.log(serverResponse);
+          $('#message').text('Map has been created.  Starting point for your map has been set!');
+          $(document).unbind();
+          $("#back-or-play").show();
+        }
+      });
+    });
+  });
+
 $(document).on("click", ".clickable", function(event){
   var that = event.target;
   $('.grid-cell').filter(function(index){
@@ -81,39 +82,35 @@ $(document).on("click", ".clickable", function(event){
 })
 
 function getNorthId(currentSquare){
-  if(! $(currentSquare).hasClass("row-1")){
-    console.log("finding north neighbor...............................................................");
-    var index = $(currentSquare).index();
-    var northRoom = $('.grid-cell')[index - 5];
-    return $(northRoom).attr("id");
-  }
+  if(! $(currentSquare).hasClass("row-1")){
+    var index = $(currentSquare).index();
+    var northRoom = $('.grid-cell')[index - 5];
+    return $(northRoom).attr("id");
+  }
 };
 
 function getSouthId (currentLocationIndex) {
-  if(! $(currentSquare).hasClass("row-5") ){
-    console.log("finding south neighbor...............................................................");
-    var index = $(currentSquare).index();
-    var southRoom = $('.grid-cell')[index + 5];
-    return $(southRoom).attr("id");
-  }
+  if(! $(currentSquare).hasClass("row-5") ){
+    var index = $(currentSquare).index();
+    var southRoom = $('.grid-cell')[index + 5];
+    return $(southRoom).attr("id");
+  }
 }
 
 var getWestId = function(currentLocationIndex) {
-  if(! $(currentSquare).hasClass("col-1")){
-    console.log("finding west neighbor...............................................................");
-    var index = $(currentSquare).index();
-    var westRoom = $('.grid-cell')[index - 1];
-    return $(westRoom).attr("id");
-  }
+  if(! $(currentSquare).hasClass("col-1")){
+    var index = $(currentSquare).index();
+    var westRoom = $('.grid-cell')[index - 1];
+    return $(westRoom).attr("id");
+  }
 }
 
 var getEastId = function(currentLocationIndex) {
-  if(! $(currentSquare).hasClass("col-5")){
-    console.log("finding east neighbor...............................................................");
-    var index = $(currentSquare).index();
-    var eastRoom = $('.grid-cell')[index + 1];
-    return $(eastRoom).attr("id");
-  }
+  if(! $(currentSquare).hasClass("col-5")){
+    var index = $(currentSquare).index();
+    var eastRoom = $('.grid-cell')[index + 1];
+    return $(eastRoom).attr("id");
+  }
 }
 
   $(document).on("submit", "#room-form", function(){
@@ -131,22 +128,19 @@ var getEastId = function(currentLocationIndex) {
       $("#west_id").val(getWestId(currentSquare))
     }
     console.log($("#room-form").html());
-    var url = $('#room-form').attr('action');
     var data = $('#room-form').serialize();
     $.ajax({
-      url: url,
+      url:  $('#room-form').attr('action'),
       type: "POST",
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: data,
       success: function(response){
         $(currentSquare).css("background-color", "green");
+        $(currentSquare).text(response.room_name)
         $(currentSquare).removeClass('clickable');
         $(currentSquare).attr('id', response.room_id);
+        $("#finish-map").show();
         $("#room-form-container").empty();
-
-        // Also remove clickable from the classes!
-        //  change that square's id to the room id we just made
-        // window.lastSquareSaved === window.lastSquareClicked
       }
     });
   });
