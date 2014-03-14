@@ -17,9 +17,9 @@ DragonBlaster::Application.routes.draw do
 
   post '/games/:id/input', to: 'games#input'
 
-  get '/all_games/:user_id', to: 'games#all', as: 'all_games'
+  get '/all_games', to: 'games#all', as: 'all_games'
 
-  get '/game/new/:map_id', to: 'games#launch', as: "games_launch"
+  get '/games/launch/:game_id', to: 'games#launch', as: "games_launch"
 
 
 end

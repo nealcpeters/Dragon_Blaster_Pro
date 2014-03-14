@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def all
-    @games = Game.where(player_id: params[:user_id])
+    @games = current_user.games
   end
 
   def show
@@ -42,7 +42,13 @@ class GamesController < ApplicationController
   end
 
   def launch
-    @map_id = params[:map_id]
+    game = Game.where(player_id: current_user.id,id: params[:game_id]).first
+    if game
+      render 'show'
+    else
+      flash[:notice] = "That game wasn't located"
+      redirect_to all_games_path
+    end
   end
 
   def new
