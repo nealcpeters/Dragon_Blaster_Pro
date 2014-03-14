@@ -1,11 +1,13 @@
 class HerosController < ApplicationController
 
+
+
   def show
     @hero = Hero.find(params[:id])
   end
 
   def index
-    @user = User.find(session[:user_id])
+    @user = current_user
     @hero = @user.heros.all
   end
 
