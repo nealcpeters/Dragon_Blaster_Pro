@@ -19,7 +19,10 @@
   <% end %>
   <div class ="body_container">
     <%= yield %>
-    <p id="alert"><%= alert %></p>
+    <% if alert %>
+      <p id="alert"><%= alert %></p>
+    <% end %>
+
   </div>
 </body>
 </html>
