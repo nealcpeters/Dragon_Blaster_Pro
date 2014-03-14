@@ -5,3 +5,5 @@
   <p>Description: <%= hero.description %></p>
   <p>Games Played: <%=hero.games.length%></p>
 <% end %>
+<br><br>
+<%= link_to "Make a New Hero", new_user_hero_path(@user) %>
