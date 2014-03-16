@@ -36,6 +36,7 @@ $(function(){
             console.log(serverResponse);
             window.mapId = serverResponse.map_id;
             $('#dialog-form').dialog("close");
+            $("#message").text("Okay, Cartographer! Time to give your map some rooms.  Click on a square to make a room at that location on your map.")
           }
         })
       },

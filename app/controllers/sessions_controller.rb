@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_username(params[:username])
+    user = User.where("lower(username) = ?", params[:username].downcase).first
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_path, notice: 'Logged in!'
