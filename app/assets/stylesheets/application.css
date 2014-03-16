@@ -34,6 +34,8 @@ nav {
   text-align: center;
   width: 70%;
   margin: auto;
+  font-family: 'eg_dragon_caps_regular';
+  font-size: 1.8em;
 }
 
 #welcome-page-img img {
@@ -44,6 +46,7 @@ nav {
 #button-container {
   width: 40%;
   float: left;
+  margin-top: 18%;
 }
 
 .main-button {
@@ -58,7 +61,7 @@ nav {
 .main-button a {
   color: #F8FAD3;
   position: relative;
-  top: 40px;
+  top: 12px;
 }
 
 .centered {
