@@ -1,0 +1,12 @@
+<h1>Ready to Adventure, <%= current_user.username %>?</h1>
+
+<p class = "link_list"><%= link_to "Games", all_games_path %></p>
+
+<p class = "link_list"><%= link_to "My Maps", user_maps_path(current_user) %></p>
+
+<p class = "link_list"><%= link_to "My Heroes", user_heros_path(current_user) %></p>
+
+<p class = "link_list"><%= link_to "Create a Map", new_user_map_path(current_user) %></p>
+
+<p class = "link_list"><%= link_to "Edit Account Information", edit_user_path(current_user) %></p>
+<%= image_tag("puking_dude.png", id: "puking-dude")%>
