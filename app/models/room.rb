@@ -23,9 +23,9 @@ class Room < ActiveRecord::Base
   end
 
   def update_neighbors
-    room_to_the_north.south_id = id if room_to_the_north
-    room_to_the_south.north_id = id if room_to_the_south
-    room_to_the_east.west_id = id if room_to_the_east
-    room_to_the_west.east_id = id if room_to_the_west
+    room_to_the_north.update(south_id: id) if room_to_the_north
+    room_to_the_south.update(north_id: id) if room_to_the_south
+    room_to_the_east.update(west_id: id) if room_to_the_east
+    room_to_the_west.update(east_id: id) if room_to_the_west
   end
 end

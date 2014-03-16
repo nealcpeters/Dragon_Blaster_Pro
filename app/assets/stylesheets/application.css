@@ -14,22 +14,77 @@
 
 body {
   padding: 0;
-  margin: 50px 0 0 0;
+  margin: 70px 0 0 0;
+  background-color: #D1E0E0;
+  background-image: url('hexellence.png');
 }
-
 
 nav {
   height: 80px;
   position: fixed;
   top: 0;
   width: 100%;
-  background-image: url('http://www.colourbox.com/preview/5789816-583545-pink-python-snake-skin-texture-background.jpg');
+  background-image: url('scales1.jpg');
   margin: 0;
+  border-bottom: 2px solid #213100;
+  box-shadow: 0 -3px 40px #314A00;
+}
+
+#welcome-page-img {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  font-family: 'eg_dragon_caps_regular';
+  font-size: 1.8em;
+}
+
+#welcome-page-img img {
+  width: 60%;
+  float: left;
+}
+
+#button-container {
+  width: 40%;
+  float: left;
+  margin-top: 18%;
+}
+
+.main-button {
+  height: 100px;
+  width: 60%;
+  margin: auto;
+  background-color: black;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.main-button a {
+  color: #F8FAD3;
+  position: relative;
+  top: 12px;
+}
+
+.centered {
+  text-align: center;
+}
+
+#puking-dude {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  height: 75%;
 }
 
 nav p {
+  margin-left: 20px;
   display: inline;
   font-size: 2em;
+}
+
+h1 {
+  font-family: 'eg_dragon_caps_regular';
+  color: #1F1F1F;
+  text-align: center;
 }
 
 nav ul {
@@ -45,11 +100,20 @@ nav li {
 
 nav a {
   text-decoration: none;
-  color: white;
+  color: #F8FAD3;
 }
 
-#dialog-form {
-  background-color: pink;
+nav a:hover {
+  background-color: none;
+  color: #E8FFE8;
+}
+
+.ui-dialog {
+  background-color: #D1E0E0;
+  height: 100px;
+  position: fixed;
+  top: 20%;
+  left: 30%;
 }
 
 .no-close .ui-dialog-titlebar-close {
@@ -60,6 +124,7 @@ nav a {
   margin: 0 auto;
   padding: 5px;
   width: 410px;
+  margin-top: 30px;
 }
 
 #cells div {
@@ -68,6 +133,7 @@ nav a {
   border: 1px solid black;
   float: left;
   margin: 0;
+  background-color: white;
 }
 
 .body_container {
@@ -76,16 +142,25 @@ nav a {
 }
 
 .link_list {
-  text-indent: 2em;
+  text-align: center;
+  font-size: 1.4em;
+  background-color: black;
+  border-radius: 8px;
+  width: 200px;
+  padding: 10px 0;
+}
+
+.link-list-container {
+  margin-left: 12%;
+  margin-top: 80px;
+}
+
+.link_list a {
+  color: #F8FAD3;
 }
 
 a{
-  color: purple;
-  text-decoration: none;
-}
-
-a:hover{
-  background-color: pink;
+  color: black;
   text-decoration: none;
 }
 
@@ -106,7 +181,7 @@ a:hover{
 
 #alert {
   padding: 1em;
-  color: pink;
+  color: #D1E0E0;
   background-color: black;
   width: 25%;
   margin-top: 2em;

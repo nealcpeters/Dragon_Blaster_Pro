@@ -1,13 +1,6 @@
-<h1>Welcome to Dragon Blaster!</h1>
-<%= image_tag("puff1.png") %>
-<% if :notice %>
-  <%= flash[:notice] %>
+<% if current_user %>
+  <%= render "logged_in_welcome"%>
+<% else %>
+  <%= render "not_logged_in_welcome"%>
 <% end %>
-<ul>
-  <% unless current_user %>
-    <li><%= link_to 'New User?', new_user_path %></li>
-    <li><%= link_to 'Existing User?', new_session_path %></li>
-  <% else %>
-       <li><%= link_to 'Sign-Out',  session_path(current_user), method: :delete %></li>
-<% end %>
-</ul>
+
