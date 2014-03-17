@@ -29,6 +29,7 @@ nav {
   margin: 0;
   border-bottom: 2px solid #213100;
   box-shadow: 0 -3px 40px #314A00;
+  z-index: 1;
 }
 
 #welcome-page-img {
@@ -120,7 +121,7 @@ nav a:hover {
   margin-bottom: 10px;
 }
 
-.ui-dialog {
+/*.ui-dialog {
   background-color: #2C3210;
   color: #F8FAD3;
   padding: 0 15px 15px 15px;
@@ -129,9 +130,13 @@ nav a:hover {
   top: 20%;
   left: 30%;
 }
-
+*//*
 .ui-button {
   background-color: #1F1F1F;
+}*/
+
+.ui-dialog-title {
+  color: #F8FAD3;
 }
 
 #dialog-form input {
@@ -145,26 +150,31 @@ nav a:hover {
 
 #map-creation {
   width: 80%;
+  margin: auto;
 }
 
 #cells {
   margin: 0 auto;
-  padding: 5px;
-  width: 60%;
+  padding: 0;
+/*  width: 45%;*/
   margin-top: 30px;
+  background-image: url('map-paper.jpg');
+  display: inline-block;
+  border: 1px solid black;
 }
 
-#cells div {
+.grid-cell {
   width: 78px;
   height: 80px;
   border: 1px solid black;
   float: left;
   margin: 0;
-  background-color: white;
+  background-color: none;
 }
 
 .body_container {
   width: 90%;
+  margin: auto;
   padding: 1em 3em 0 3em;
 }
 
@@ -192,7 +202,7 @@ nav a:hover {
 }
 
 .basic-button a {
-  color: #F8FAD3;
+  color: #f4f6dc;
 }
 
 .link-list-container {
@@ -235,6 +245,15 @@ a{
   border-radius: 10em;
 }
 
+#map_title {
+  color: black;
+}
+
+#map_description {
+  width: 100%;
+  color: black;
+}
+
 #message {
   width: 300px;
   height: 150px;
@@ -246,7 +265,14 @@ a{
 }
 
 #map-creation-side-panel {
-  width: 40%;
+  display: inline-block;
+  width: 35%;
+  margin: 0;
+  padding: 2%;
+  font-size: 1.2em;
+  text-align: center;
+  position: relative;
+  bottom: 180px;
 }
 
 .hero-container {
@@ -261,9 +287,24 @@ a{
   margin-right: 22px;
 }
 
-/*div #gameboard {
-  width: 350px; margin: 20px 0;
-}*/
+#room-form input {
+  margin-top: 15px;
+}
+
+#room-form textarea {
+  margin-top: 15px;
+  width: 100%;
+}
+
+#room-form :first-child {
+  width: 100%;
+}
+
+div #gameboard {
+  width: 45%;
+  text-align: center;
+  display: inline-block;
+}
 
 /*div #gameboard table {
   margin: 1em 0; border-collapse: collapse; width: 100%;
