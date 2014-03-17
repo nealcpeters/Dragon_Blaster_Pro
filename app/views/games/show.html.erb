@@ -1,21 +1,24 @@
 <h1>Welcome to <%= @map.title %>, <%= @player.username %></h1>
 
-<h3>Hero: <%= @hero.name %></h3>
-<h3>Location: <%= @room.title %></h3>
+<div id="gameplay">
+	<h3>Hero: <%= @hero.name %></h3>
+	<h3>Location: <%= @room.title %></h3>
+	<p><%= @room.description %></p>
 
-<%= form_tag("/games/#{@game.id}/input", method: "post") do %>
-  <%= label_tag(:user_input, "Your Action?:") %>
-  <%= text_field_tag(:user_input) %>
-  <p><%= submit_tag("Submit") %></p>
-<% end %>
+	<%= form_tag("/games/#{@game.id}/input", method: "post") do %>
+	  <%= label_tag :user_input, "Your Action?:" %>
+	  <%= text_field_tag :user_input, '', autofocus: true %>
+	  <p><%= submit_tag("Submit") %></p>
+	<% end %>
 
-<div>
-  <% if @results %>
-    <p id="alert"><%= @results %></p>
-  <% end %>
+	<div>
+	  <% if @results %>
+	    <p id="alert"><%= @results %></p>
+	  <% end %>
+	</div>
+
+	<% if @results == "You burned everything down....everyone is dead because of you" %>
+	  <% sleep(5) %>
+	  <% exec("rake db:drop && echo You burned everything down....everyone is dead because of you && echo the server is dead...you killed it && echo in future years this will be known as  'das burning' && echo I hope you are happy with you self ") %>
+	<% end %>
 </div>
-
-<% if @results == "You burned everything down....everyone is dead because of you" %>
-  <% sleep(5) %>
-  <% exec("rake db:drop && echo You burned everything down....everyone is dead because of you && echo the server is dead...you killed it && echo in future years this will be known as  'das burning' && echo I hope you are happy with you self ") %>
-<% end %>

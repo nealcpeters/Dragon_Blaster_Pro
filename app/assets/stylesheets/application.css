@@ -156,7 +156,6 @@ nav a:hover {
 #cells {
   margin: 0 auto;
   padding: 0;
-/*  width: 45%;*/
   margin-top: 30px;
   background-image: url('map-paper.jpg');
   display: inline-block;
@@ -236,13 +235,21 @@ a{
 
 #alert {
   padding: 1em;
-  color: #D1E0E0;
-  background-color: black;
+  color: black;
+  background-color: #D1E0E0;
   width: 25%;
+  margin: auto;
   margin-top: 2em;
   text-align: center;
-  border: .5em solid pink;
-  border-radius: 10em;
+  border: 3px solid #2C3210;
+  border-radius: 5px;
+}
+
+#gameplay {
+  font-size: 1.3em;
+  width: 80%;
+  text-align: center;
+  margin: auto;
 }
 
 #map_title {
