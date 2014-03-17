@@ -2,7 +2,7 @@
     <p><%= link_to 'Dragon Blaster }', root_path,  class: "main-page-header"%></p>
     <ul>
       <% if current_user %>
-        <li><%= link_to "#{ current_user.username }'s Profile", user_path(current_user) %></li>
+        <li><%= link_to "#{ current_user.username }'s Homepage", root_path %></li>
         <li><%= link_to 'Sign-Out',  session_path(current_user), method: :delete %></li>
       <% else %>
         <li><%= link_to 'Register', new_user_path %></li>

@@ -1,9 +1,11 @@
 <h1><%= @user.username %>'s Heroes</h1>
 
 <% @hero.each do |hero| %>
-  <p> Name: <%= hero.name %></p>
-  <p>Description: <%= hero.description %></p>
-  <p>Games Played: <%=hero.games.length%></p>
+	<div class="hero-container">
+	  <p> Name: <%= hero.name %></p>
+	  <p>Description: <%= hero.description %></p>
+	  <p>Games Played: <%=hero.games.length%></p>
+	</div>
 <% end %>
 <br><br>
-<%= link_to "Make a New Hero", new_user_hero_path(@user) %>
+<p class="basic-button centered-block"><%= link_to "Make a New Hero", new_user_hero_path(@user) %></p>

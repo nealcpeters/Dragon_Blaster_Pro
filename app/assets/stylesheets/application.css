@@ -21,7 +21,7 @@ body {
 }
 
 nav {
-  height: 80px;
+  height: 75px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -92,6 +92,7 @@ nav ul {
   display: inline;
   position: absolute;
   right: 30px;
+  bottom: 0px;
 }
 
 nav li {
@@ -109,12 +110,33 @@ nav a:hover {
   color: #E8FFE8;
 }
 
+.arrow-bullet {
+  font-family: 'eg_dragon_caps_regular';
+  font-size: .7em;
+  margin-right: 8px;
+}
+
+.map-list-item {
+  margin-bottom: 10px;
+}
+
 .ui-dialog {
-  background-color: #D1E0E0;
+  background-color: #2C3210;
+  color: #F8FAD3;
+  padding: 0 15px 15px 15px;
   height: 100px;
   position: fixed;
   top: 20%;
   left: 30%;
+}
+
+.ui-button {
+  background-color: #1F1F1F;
+}
+
+#dialog-form input {
+  width: 100%;
+  margin: 10px 0;
 }
 
 .no-close .ui-dialog-titlebar-close {
@@ -146,14 +168,31 @@ nav a:hover {
   padding: 1em 3em 0 3em;
 }
 
+.centered-block {
+  margin: auto;
+}
+
 
 .link_list {
   font-family: 'eg_dragon_caps_regular';
   text-align: center;
-  background-color: black;
+  background-color: #1F1F1F;
   border-radius: 8px;
   width: 200px;
   padding: 10px 0;
+}
+
+.basic-button {
+  font-family: 'eg_dragon_caps_regular';
+  text-align: center;
+  background-color: #1F1F1F;
+  border-radius: 8px;
+  width: 200px;
+  padding: 10px 5px;
+}
+
+.basic-button a {
+  color: #F8FAD3;
 }
 
 .link-list-container {
@@ -208,6 +247,18 @@ a{
 
 #map-creation-side-panel {
   width: 40%;
+}
+
+.hero-container {
+  margin: 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+}
+
+.list-titles {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-right: 22px;
 }
 
 /*div #gameboard {

@@ -18,11 +18,9 @@
 
 $(function(){
   $("#dialog-form").dialog({
-    autoOpen: true,
-    height: 350,
+    modal: true,
     width: 250,
     dialogClass: 'no-close',
-    modal: true,
     buttons: {
       "Submit": function() {
         var data = $('#new_map').serialize();
