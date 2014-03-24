@@ -1,9 +1,6 @@
-== README
+# Dragon Blaster
 
-Dragon Blaster
-======
-
-## Contributors: Lauren Scott, Neal Peters, Eric Stensland , Diana Calvache
+### Contributors: Lauren Scott, Neal Peters, Eric Stensland , Diana Calvache
 
 * Ruby version
 
@@ -23,17 +20,20 @@ Check out project at localhost:3000
 * Database creation
 ```ruby
 rake db:create
+```
 
 * Database initialization
 ```ruby
 rake db:migrate
 rake db:seed
+```
 
 Extensive seed file with premade games, maps, and rooms.
 
 * How to run the test suite
 ```ruby
 rake
+```
 
 * Game Play
 
