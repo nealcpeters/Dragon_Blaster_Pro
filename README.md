@@ -1,7 +1,6 @@
 # Dragon Blaster
-A Text-based RPG web app game
 
-#### Contributors: Lauren Scott, Neal Peters, Eric Stensland , Diana Calvache
+#### Contributors: [Lauren Scott](https://github.com/devdame), [Neal Peters](https://github.com/nealcpeters), [Eric Stensland](https://github.com/estensland) , [Diana Calvache](https://github.com/calvached)
 
 ## Ruby version
 
