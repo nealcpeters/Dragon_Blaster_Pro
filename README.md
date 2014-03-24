@@ -13,7 +13,7 @@ Built in Ruby 2.0.0p353 and Rails 4.0.3
 Clone the repo
 Then execute:
 ```
-Bundle install
+bundle install
 ```
 Start server with:
 ```
