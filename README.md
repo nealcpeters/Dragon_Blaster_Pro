@@ -10,15 +10,16 @@ Built in Ruby 2.0.0p353 and Rails 4.0.3
 
 ### Configuration
 
-1. Fork project
-2. Bundle install
+Clone the repo
+Then execute:
 ```ruby
-rake db:create
-rake db:migrate
-rake db:seed
+Bundle install
 ```
-3. Start server with 'rails s'
-4. Check out project at localhost:3000
+Start server with:
+```ruby
+rails s
+```
+Check out project at localhost:3000
 
 ### Database creation
 ```ruby
@@ -45,7 +46,8 @@ rake rspec
 3. Each room can be applied a name and description.
 
 ### Contributing
-1. Fork it ()
-2. Create your feature branch ()
-3. Push to the branch ()
-4. Create new Pull Request ()
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
