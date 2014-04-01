@@ -1,6 +1,6 @@
 # Dragon Blaster
 
-#### Contributors: [Lauren Scott](https://github.com/devdame), [Neal Peters](https://github.com/nealcpeters), [Eric Stensland](https://github.com/estensland) , [Diana Calvache](https://github.com/calvached)
+#### Contributors: [Lauren Scott](https://github.com/devdame), [Neal Peters](https://github.com/nealcpeters), [Eric Stensland](https://github.com/estensland), [Diana Calvache](https://github.com/calvached)
 
 ## Ruby version
 
