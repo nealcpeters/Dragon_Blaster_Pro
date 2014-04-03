@@ -2,6 +2,8 @@
 
 #### Contributors: [Lauren Scott](https://github.com/devdame), [Neal Peters](https://github.com/nealcpeters), [Eric Stensland](https://github.com/estensland), [Diana Calvache](https://github.com/calvached)
 
+![DragonBlaster](http://i.imgur.com/5BF04DB.png)
+
 ## Ruby version
 
 Built in Ruby 2.0.0p353 and Rails 4.0.3
