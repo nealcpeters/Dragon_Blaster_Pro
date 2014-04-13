@@ -19,10 +19,9 @@
 $(function(){
   $("#dialog-form").dialog({
     autoOpen: true,
-    height: 350,
+    modal: true,
     width: 250,
     dialogClass: 'no-close',
-    modal: true,
     buttons: {
       "Submit": function() {
         var data = $('#new_map').serialize();
@@ -36,11 +35,12 @@ $(function(){
             console.log(serverResponse);
             window.mapId = serverResponse.map_id;
             $('#dialog-form').dialog("close");
+            $("#message").text("Okay, Cartographer! Time to give your map some rooms.  Click on a square to make a room at that location on your map.")
           }
         })
       },
       Cancel: function() {
-        window.location.href = "/users/" + window.userId;
+        window.location.href = "/";
       }
     },
   });
@@ -49,8 +49,8 @@ $(function(){
     $('.grid-cell').removeClass('clickable');
     $('#message').text("Wow, such map!  Click on the square you'd like your player to start in, and you'll be good to go.")
     $('.grid-cell').filter(function(index){
-      return $(this).css('background-color') == "rgb(0, 0, 255)";
-    }).css('background-color', 'white');
+      return $(this).css('background-color') == "rgb(67, 119, 161)";
+    }).css('background-color', 'none');
     $("#finish-map").hide();
     $("#room-form-container").empty();
     $(document).on("click", '.grid-cell[id]', function(event){
@@ -73,12 +73,12 @@ $(function(){
 $(document).on("click", ".clickable", function(event){
   var that = event.target;
   $('.grid-cell').filter(function(index){
-    return $(this).css('background-color') == "rgb(0, 0, 255)";
-  }).css('background-color', 'white');
+    return $(this).css('background-color') == "rgb(67, 119, 161)";
+  }).css('background-color', 'transparent');
   currentSquare = that;
-  $(that).css("background", "blue");
+  $(that).css("background", "#4377A1");
   $("#room-form-container").empty();
-  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input id='north_id' type='hidden' name='north_id'><input id='south_id' type='hidden' name='south_id'><input id='east_id' type='hidden' name='east_id'><input id='west_id' type='hidden' name='west_id'><input type='hidden' name='map_id' value=" + window.mapId + "><input type='submit' value='Add Room'></form>");
+  $("#room-form-container").append("<form id='room-form' action='/users/" + window.userId + "/maps/" + window.mapId + "/rooms' method='POST'><input type='text' placeholder='Room Name' name='title'><br><textarea form='room-form' name='description' placeholder='Room Description'></textarea><input id='north_id' type='hidden' name='north_id'><input id='south_id' type='hidden' name='south_id'><input id='east_id' type='hidden' name='east_id'><input id='west_id' type='hidden' name='west_id'><input type='hidden' name='map_id' value=" + window.mapId + "><br><input type='submit' value='Add Room'></form>");
 })
 
 function getNorthId(currentSquare){
@@ -135,7 +135,7 @@ var getEastId = function(currentLocationIndex) {
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: data,
       success: function(response){
-        $(currentSquare).css("background-color", "green");
+        $(currentSquare).css("background-color", "#67A143");
         $(currentSquare).text(response.room_name)
         $(currentSquare).removeClass('clickable');
         $(currentSquare).attr('id', response.room_id);

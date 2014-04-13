@@ -17,10 +17,11 @@ body {
   margin: 70px 0 0 0;
   background-color: #D1E0E0;
   background-image: url('hexellence.png');
+  font-family: 'IM Fell DW Pica', serif;
 }
 
 nav {
-  height: 80px;
+  height: 75px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -28,6 +29,7 @@ nav {
   margin: 0;
   border-bottom: 2px solid #213100;
   box-shadow: 0 -3px 40px #314A00;
+  z-index: 1;
 }
 
 #welcome-page-img {
@@ -91,6 +93,7 @@ nav ul {
   display: inline;
   position: absolute;
   right: 30px;
+  bottom: 0px;
 }
 
 nav li {
@@ -108,46 +111,97 @@ nav a:hover {
   color: #E8FFE8;
 }
 
-.ui-dialog {
-  background-color: #D1E0E0;
+.arrow-bullet {
+  font-family: 'eg_dragon_caps_regular';
+  font-size: .7em;
+  margin-right: 8px;
+}
+
+.map-list-item {
+  margin-bottom: 10px;
+}
+
+/*.ui-dialog {
+  background-color: #2C3210;
+  color: #F8FAD3;
+  padding: 0 15px 15px 15px;
   height: 100px;
   position: fixed;
   top: 20%;
   left: 30%;
+}
+*//*
+.ui-button {
+  background-color: #1F1F1F;
+}*/
+
+.ui-dialog-title {
+  color: #F8FAD3;
+}
+
+#dialog-form input {
+  width: 100%;
+  margin: 10px 0;
 }
 
 .no-close .ui-dialog-titlebar-close {
   display: none;
 }
 
-#cells {
-  margin: 0 auto;
-  padding: 5px;
-  width: 410px;
-  margin-top: 30px;
+#map-creation {
+  width: 80%;
+  margin: auto;
 }
 
-#cells div {
-  width: 80px;
+#cells {
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 30px;
+  background-image: url('map-paper.jpg');
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.grid-cell {
+  width: 78px;
   height: 80px;
   border: 1px solid black;
   float: left;
   margin: 0;
-  background-color: white;
+  background-color: none;
 }
 
 .body_container {
   width: 90%;
+  margin: auto;
   padding: 1em 3em 0 3em;
 }
 
+.centered-block {
+  margin: auto;
+}
+
+
 .link_list {
+  font-family: 'eg_dragon_caps_regular';
   text-align: center;
-  font-size: 1.4em;
-  background-color: black;
+  background-color: #1F1F1F;
   border-radius: 8px;
   width: 200px;
   padding: 10px 0;
+}
+
+.basic-button {
+  font-family: 'eg_dragon_caps_regular';
+  text-align: center;
+  background-color: #1F1F1F;
+  border-radius: 8px;
+  width: 200px;
+  padding: 10px 5px;
+}
+
+.basic-button a {
+  color: #f4f6dc;
 }
 
 .link-list-container {
@@ -181,18 +235,83 @@ a{
 
 #alert {
   padding: 1em;
-  color: #D1E0E0;
-  background-color: black;
+  color: black;
+  background-color: #D1E0E0;
   width: 25%;
+  margin: auto;
   margin-top: 2em;
   text-align: center;
-  border: .5em solid pink;
-  border-radius: 10em;
+  border: 3px solid #2C3210;
+  border-radius: 5px;
 }
 
-/*div #gameboard {
-  width: 350px; margin: 20px 0;
-}*/
+#gameplay {
+  font-size: 1.3em;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+#map_title {
+  color: black;
+}
+
+#map_description {
+  width: 100%;
+  color: black;
+}
+
+#message {
+  width: 300px;
+  height: 150px;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 30px;
+  font-size: 1.5em;
+  padding: 8px;
+}
+
+#map-creation-side-panel {
+  display: inline-block;
+  width: 35%;
+  margin: 0;
+  padding: 2%;
+  font-size: 1.2em;
+  text-align: center;
+  position: relative;
+  bottom: 180px;
+}
+
+.hero-container {
+  margin: 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+}
+
+.list-titles {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-right: 22px;
+}
+
+#room-form input {
+  margin-top: 15px;
+}
+
+#room-form textarea {
+  margin-top: 15px;
+  width: 100%;
+}
+
+#room-form :first-child {
+  width: 100%;
+}
+
+div #gameboard {
+  width: 45%;
+  text-align: center;
+  display: inline-block;
+}
 
 /*div #gameboard table {
   margin: 1em 0; border-collapse: collapse; width: 100%;

@@ -1,7 +1,6 @@
 <h1>Game Listing:</h1>
 
-<p>Start New Game:</p>
-<p><%= link_to "Create A Game", new_game_path %></p>
+<p class="basic-button centered-block"><%= link_to "start a new game", new_game_path %></p>
 <hr />
 <p>Current Games:</p>
  <% @games.each do |game| %>
